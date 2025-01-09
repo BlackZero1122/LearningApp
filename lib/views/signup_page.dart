@@ -37,7 +37,7 @@ class SignUpPage extends StatelessWidget {
         body: Column(
           children: [
             Expanded(child: SizedBox()),
-            SizedBox( height: 670,
+            SizedBox( height: 580,
               child: Container( height: double.infinity,
                   decoration: const BoxDecoration(color: Color(0xff262835),),
                   child: SingleChildScrollView(
@@ -61,43 +61,43 @@ class SignUpPage extends StatelessWidget {
                                                   }
                                                   return null;
                                                 },controller: nameController, fillColor: Color(0xffc5ced9), hintText: "Full Name..."),
-                                    SizedBox(height: 10,),
-                                    Text('Gender', style: TextStyle(color: Color(0xffc5ced9)),),
-                                    Row(children: [
-                                      Expanded(
-                                        child: ListTile(
-                                                  title: const Text('Male', style: TextStyle(color: Colors.grey),),
-                                                  leading: SizedBox( width: 10,
-                                                    child: Radio<String>(fillColor: WidgetStatePropertyAll(Colors.grey),
-                                                      value: "Male",
-                                                      groupValue: gender,
-                                                      onChanged: (String? value) {
-                                                        setState(() {
-                                                          gender = value!;
-                                                        });
-                                                      },
-                                                    ),
-                                                  ),
-                                                ),
-                                      ),
-                                      Expanded(
-                                        child: ListTile(
-                                                  title: const Text('Female', style: TextStyle(color: Colors.grey),),
-                                                  leading: SizedBox( width: 10,
-                                                    child: Radio<String>(fillColor: WidgetStatePropertyAll(Colors.grey),
-                                                      value: "Female",
-                                                      groupValue: gender,
-                                                      onChanged: (String? value) {
-                                                        setState(() {
-                                                          gender = value!;
-                                                        });
-                                                      },
-                                                    ),
-                                                  ),
-                                                ),
-                                      )
-                                    ],),
-                                    SizedBox(height: 5,),
+                                    SizedBox(height: 20,),
+                                    // Text('Gender', style: TextStyle(color: Color(0xffc5ced9)),),
+                                    // Row(children: [
+                                    //   Expanded(
+                                    //     child: ListTile(
+                                    //               title: const Text('Male', style: TextStyle(color: Colors.grey),),
+                                    //               leading: SizedBox( width: 10,
+                                    //                 child: Radio<String>(fillColor: WidgetStatePropertyAll(Colors.grey),
+                                    //                   value: "Male",
+                                    //                   groupValue: gender,
+                                    //                   onChanged: (String? value) {
+                                    //                     setState(() {
+                                    //                       gender = value!;
+                                    //                     });
+                                    //                   },
+                                    //                 ),
+                                    //               ),
+                                    //             ),
+                                    //   ),
+                                    //   Expanded(
+                                    //     child: ListTile(
+                                    //               title: const Text('Female', style: TextStyle(color: Colors.grey),),
+                                    //               leading: SizedBox( width: 10,
+                                    //                 child: Radio<String>(fillColor: WidgetStatePropertyAll(Colors.grey),
+                                    //                   value: "Female",
+                                    //                   groupValue: gender,
+                                    //                   onChanged: (String? value) {
+                                    //                     setState(() {
+                                    //                       gender = value!;
+                                    //                     });
+                                    //                   },
+                                    //                 ),
+                                    //               ),
+                                    //             ),
+                                    //   )
+                                    // ],),
+                                    // SizedBox(height: 5,),
                                     Text('Email', style: TextStyle(color: Color(0xffc5ced9)),),
                                     DefaultTextInput(validator: (value) {
                                                   if (value == null || value.isEmpty) {

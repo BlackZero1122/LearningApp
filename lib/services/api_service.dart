@@ -82,21 +82,21 @@ class APIService implements IAPIService {
       String name, String email, String password, String gender) async {
     if (await _networkService.isConnected) {
       try {
-        FirebaseFirestore firestore = FirebaseFirestore.instance;
+        // FirebaseFirestore firestore = FirebaseFirestore.instance;
           try {
             await FirebaseAuth.instance.createUserWithEmailAndPassword(
                 email: email, password: password);
-            User? user = FirebaseAuth.instance.currentUser;
-            // Add user details
-            if (user != null) {
-              await firestore.collection('users').doc(user.uid).set({
-                'name': name,
-                'gender': gender,
-                'email': user.email, // Optional: Store user email
-                'createdAt':
-                    FieldValue.serverTimestamp(), // Timestamp for user creation
-              });
-            }
+            // User? user = FirebaseAuth.instance.currentUser;
+            // // Add user details
+            // if (user != null) {
+            //   await firestore.collection('users').doc(user.uid).set({
+            //     'name': name,
+            //     'gender': gender,
+            //     'email': user.email, // Optional: Store user email
+            //     'createdAt':
+            //         FieldValue.serverTimestamp(), // Timestamp for user creation
+            //   });
+            // }
 
             return ApiStatus(
               data: null,
