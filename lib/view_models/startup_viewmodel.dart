@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:learning_app/helpers/locator.dart';
@@ -73,37 +75,12 @@ class StartupViewModel extends BaseViewModel {
                         Quiz(quizType: "FillInBlank", id: "0010010022", image: "", question: "8 + 9 - 2 = ______", answerList: [AnswerList(id: "00100100221", answer: "15", image: "", isCorrect: true)], questionList: []),
                         Quiz(quizType: "TrueFalse", id: "0010010023", image: "", question: "98 - 90 + 2 + 7 = 20.", answerList: [AnswerList(id: "00100100231", answer: "Yes", image: "", isCorrect: false), AnswerList(id: "00100100232", answer: "No", image: "", isCorrect: true)], questionList: []),
                       ]
-                    ), rules: Rules(maxReadCount: 1, trackActivityProgress: true))
+                    ), rules: Rules(maxReadCount: 1, trackActivityProgress: true)),
+                    Activity(activityId: "001001003", id: "001001003", lessonId: "001001", subjectId: "001", title: "Activity 3", topic: "Topic 1", activityType: 8, activityTypeString: "YouTubeVideo", content: "https://www.youtube.com/watch?v=BBAyRBTfsOU", grade: 0, subject: 0, semester: 0, session: 0, thumbnail: "", sequence: 0, readCount: 0, assessment: null, rules: Rules(maxReadCount: 1, trackActivityProgress: true)),
                   ]),
-                  Lesson(title: 'Lesson 2', subjectId: "001", id:"002001", topicId: "002001", sequence: 1, enable: true, thumbnail: "", totalActivities: 0, activities: []),
-                  Lesson(title: 'Lesson 3', subjectId: "001", id:"003001", topicId: "003001", sequence: 2, enable: true, thumbnail: "", totalActivities: 0, activities: [])
                 ]
               );
-              var mathSubject = Subject(
-                id:"002",
-                name: "Math 101",
-                code: "002",
-                thumbnail: "",
-                title: "Math 101",
-                subject: "Math",
-                courseId: "002",
-                courseName: "Math 101",
-                lessons: []
-              );
-              var sciSubject = Subject(
-                id:"003",
-                name: "Science 101",
-                code: "003",
-                thumbnail: "",
-                title: "Science 101",
-                subject: "Science",
-                courseId: "003",
-                courseName: "Science 101",
-                lessons: []
-              );
               await locator<IHiveService<Subject>>().addOrUpdate(engSubject);
-              await locator<IHiveService<Subject>>().addOrUpdate(mathSubject);
-              await locator<IHiveService<Subject>>().addOrUpdate(sciSubject);
           _navigationService.pushNamedAndRemoveUntil(
                 Routes.home,
                 args: TransitionType.fade,

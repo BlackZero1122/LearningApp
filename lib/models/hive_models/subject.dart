@@ -26,6 +26,10 @@ class Subject extends IHiveBaseModel<Subject> {
     String? courseId;
      @HiveField(9)
     String? courseName;
+    @HiveField(10)
+    String? description;
+    @HiveField(11)
+    String? tts_description;
 
     dynamic keyId;
     @override
@@ -42,7 +46,7 @@ class Subject extends IHiveBaseModel<Subject> {
         this.subject,
         this.lessons,
         this.courseId,
-        this.courseName,
+        this.courseName, this.description, this.tts_description
     });
 
     double get completeRatio{
@@ -53,6 +57,8 @@ class Subject extends IHiveBaseModel<Subject> {
     }
 
     factory Subject.fromJson(Map<String, dynamic> json) => Subject(
+        description: json["description"],
+        tts_description: json["tts_description"],
         id: json["id"],
         name: json["name"],
         code: json["code"],
@@ -70,10 +76,12 @@ class Subject extends IHiveBaseModel<Subject> {
 
 @override
     Map<String, dynamic> toJson() => {
+      "description": description,
+      "tts_description": tts_description,
         "Id": id,
         "Name": name,
         "Code": code,
-        "CompletePercent": completePercent,
+        "CompletePercent": completePercent??"",
         "Thumbnail": thumbnail,
         "title": title,
         "subject": subject,

@@ -45,6 +45,12 @@ class Activity extends IHiveBaseModel<Activity> {
     Assessment? assessment;
      @HiveField(18)
     Rules? rules;
+     @HiveField(19)
+    String? description;
+    @HiveField(20)
+    String? tts_description;
+    @HiveField(21)
+    String? skill;
 
    dynamic keyId;
    @override
@@ -99,12 +105,12 @@ class Activity extends IHiveBaseModel<Activity> {
         this.readCount,
         this.completePercent,
         this.assessment,
-        this.rules,
+        this.rules, this.description, this.tts_description, this.skill,
     });
 
     // Copy constructor
     Activity.copy(Activity other)
-        : activityId = other.activityId,
+        : activityId = other.activityId, tts_description=other.tts_description, description=other.description, skill=other.skill,
           id = other.id,
           lessonId = other.lessonId,
           subjectId = other.subjectId,
@@ -125,6 +131,9 @@ class Activity extends IHiveBaseModel<Activity> {
           rules = other.rules;
 
     factory Activity.fromJson(Map<String, dynamic> json) => Activity(
+      skill: json["skill"],
+      description: json["description"],
+        tts_description: json["tts_description"],
         activityId: json["activityId"],
         id: json["id"],
         lessonId: json["lessonId"],
@@ -151,6 +160,9 @@ class Activity extends IHiveBaseModel<Activity> {
 
 @override
     Map<String, dynamic> toJson() => {
+      "skill": skill,
+      "description": description,
+      "tts_description": tts_description,
         "activityId": activityId,
         "id": id,
         "lessonId": lessonId,
@@ -167,8 +179,8 @@ class Activity extends IHiveBaseModel<Activity> {
         "thumbnail": thumbnail,
         "sequence": sequence,
         "ReadCount": readCount,
-        "CompletePercent": completePercent,
-        "Assessment": assessment!.toJson(),
+        "CompletePercent": completePercent??"",
+        "Assessment": assessment?.toJson(),
         "Rules": rules!.toJson(),
     };
 }

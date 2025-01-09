@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -101,7 +102,9 @@ class LoginPage extends StatelessWidget {
                                   Expanded(child: SizedBox(height: 45, child: Card(color: Color(0xff41435a), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)), child: InkWell(onTap: () async {
                                     viewModel.loginViaGoogle(context);
                                   }, child: Center(child: FaIcon(FontAwesomeIcons.google, color: Color(0xffc5ced9), size: 20,))),))),
-                                  Expanded(child: SizedBox(height: 45, child: Card(color: Platform.isIOS ? Color(0xff41435a) : const Color.fromARGB(88, 158, 158, 158), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)), child: InkWell(onTap: Platform.isIOS ? () async {
+                                  Expanded(child: SizedBox(height: 45, child: Card(color: Color(0xff41435a), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)), child: InkWell(onTap:
+                                  kIsWeb? null :
+                                  Platform.isIOS ? () async {
                                     viewModel.loginViaApple();
                                   } : null, child: Center(child: Icon(Icons.apple, color: Color(0xffc5ced9), size: 25,))),))),
                                 ],)

@@ -11,6 +11,10 @@ class QuestionList extends IHiveBaseModel<QuestionList> {
     String? question;
      @HiveField(2)
     String? image;
+    @HiveField(3)
+    String? description;
+    @HiveField(4)
+    String? tts_description;
 
   dynamic keyId;
   @override
@@ -19,10 +23,12 @@ class QuestionList extends IHiveBaseModel<QuestionList> {
     QuestionList({
         this.id,
         this.question,
-        this.image,
+        this.image, this.description, this.tts_description,
     });
 
     factory QuestionList.fromJson(Map<String, dynamic> json) => QuestionList(
+      description: json["description"],
+        tts_description: json["tts_description"],
         id: json["Id"],
         question: json["question"],
         image: json["Image"],
@@ -33,6 +39,8 @@ class QuestionList extends IHiveBaseModel<QuestionList> {
 
 @override
     Map<String, dynamic> toJson() => {
+      "description": description,
+      "tts_description": tts_description,
         "Id": id,
         "question": question,
         "Image": image,

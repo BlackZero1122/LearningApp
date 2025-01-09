@@ -9,6 +9,7 @@ import 'package:learning_app/custom_widgets/math_text_field.dart';
 import 'package:learning_app/custom_widgets/pdf_view.dart';
 import 'package:learning_app/custom_widgets/stateful_wrapper.dart';
 import 'package:learning_app/custom_widgets/video_player.dart';
+import 'package:learning_app/custom_widgets/youtube_player.dart';
 import 'package:learning_app/helpers/locator.dart';
 import 'package:learning_app/models/hive_models/activity.dart';
 import 'package:learning_app/models/hive_models/result.dart';
@@ -123,6 +124,21 @@ class _ActivityWidgetState extends State<ActivityPage> {
               defaultTargetPlatform == TargetPlatform.android) {
             return Align(
                 alignment: Alignment.center, child: VideoPlayerWidget(currentActivity: viewModel.currentActivity!));
+          } else {
+            return const Align(
+                alignment: Alignment.center,
+                child: Text("no implementation for windows and macos!"));
+          }
+        }
+      case "youtubevideo":
+        {
+          if (kIsWeb) {
+            return Align(
+                alignment: Alignment.center, child: YouTubePlayerWidget(currentActivity: viewModel.currentActivity!));
+          } else if (defaultTargetPlatform == TargetPlatform.iOS ||
+              defaultTargetPlatform == TargetPlatform.android) {
+            return Align(
+                alignment: Alignment.center, child: YouTubePlayerWidget(currentActivity: viewModel.currentActivity!));
           } else {
             return const Align(
                 alignment: Alignment.center,

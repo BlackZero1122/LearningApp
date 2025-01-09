@@ -76,6 +76,9 @@ dependencies:
   flutter_cached_pdfview: ^0.4.3
   video_player: ^2.9.2
   collection: ^1.18.0
+  percent_indicator: ^4.2.4
+  youtube_player_flutter: ^9.1.1
+  flutter_inappwebview: ^6.1.5
 
 flutter_native_splash:
   flutter_native_splash.yaml

@@ -28,6 +28,12 @@ class Lesson extends IHiveBaseModel<Lesson> {
     List<Activity>? activities;
     @HiveField(10)
     num? totalActivities;
+    @HiveField(11)
+    String? description;
+    @HiveField(12)
+    String? tts_description;
+    @HiveField(13)
+    String? skill;
 
     dynamic keyId;
     @override
@@ -58,10 +64,13 @@ class Lesson extends IHiveBaseModel<Lesson> {
         this.thumbnail,
         this.lessonEnable,
         this.activities,
-        this.totalActivities,
+        this.totalActivities, this.description, this.tts_description, this.skill,
     });
 
     factory Lesson.fromJson(Map<String, dynamic> json) => Lesson(
+      skill: json["skill"],
+      description: json["description"],
+        tts_description: json["tts_description"],
         title: json["title"],
         subjectId: json["subjectId"],
         id: json["id"],
@@ -80,15 +89,18 @@ class Lesson extends IHiveBaseModel<Lesson> {
 
 @override
     Map<String, dynamic> toJson() => {
+      "skill": skill,
+      "description": description,
+      "tts_description": tts_description,
         "title": title,
         "subjectId": subjectId,
         "id": id,
         "topicId": topicId,
         "sequence": sequence,
         "enable": enable,
-        "completePercent": completePercent,
+        "completePercent": completePercent??"",
         "thumbnail": thumbnail,
-        "lessonEnable": lessonEnable,
+        "lessonEnable": lessonEnable??true,
         "activities": List<dynamic>.from(activities!.map((x) => x.toJson())),
         "totalActivities": totalActivities,
     };

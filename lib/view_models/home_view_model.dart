@@ -122,12 +122,11 @@ class HomeViewModel extends BaseViewModel {
 
   Future<void> getData(int index) async {
     try {
-      var subs = await locator<IHiveService<Subject>>().getAll();
-      if(subs.isNotEmpty){
-        setSubjects(subs);
-        for (var element in subs) { element.selected=false; }
-        subs[index].selected=true;
-        var lessons = subs[index].lessons;
+      var sub = await locator<IHiveService<Subject>>().getFirstOrDefault();
+      if(sub !=null){
+        setSubjects([sub]);
+        sub.selected=true;
+        var lessons = sub.lessons;
         if(lessons!=null && lessons.isNotEmpty){
           setLessons(lessons);
           for (var element in lessons) { element.selected=false; element.lock=true; }

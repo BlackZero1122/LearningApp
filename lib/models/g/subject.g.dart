@@ -27,13 +27,15 @@ class SubjectAdapter extends TypeAdapter<Subject> {
       lessons: (fields[7] as List?)?.cast<Lesson>(),
       courseId: fields[8] as String?,
       courseName: fields[9] as String?,
+      description: fields[10] as String?,
+      tts_description: fields[11] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, Subject obj) {
     writer
-      ..writeByte(10)
+      ..writeByte(12)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -53,7 +55,11 @@ class SubjectAdapter extends TypeAdapter<Subject> {
       ..writeByte(8)
       ..write(obj.courseId)
       ..writeByte(9)
-      ..write(obj.courseName);
+      ..write(obj.courseName)
+      ..writeByte(10)
+      ..write(obj.description)
+      ..writeByte(11)
+      ..write(obj.tts_description);
   }
 
   @override

@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -16,7 +17,23 @@ class AuthMService{
   Future<User?> signInWithGoogle(BuildContext context)async{
     try {
       final FirebaseAuth firebaseAuth= FirebaseAuth.instance;
-    final GoogleSignIn googleSignIn= GoogleSignIn();
+      if (kIsWeb) {
+  final GoogleAuthProvider provider = GoogleAuthProvider()
+      .setCustomParameters({'prompt': 'select_account'});
+  UserCredential result = await firebaseAuth.signInWithPopup(provider);
+  User? userdetails= result.user;
+if(userdetails!=null){
+      Map<String, dynamic> userInfoMap={
+        "email": userdetails.email,
+        "name": userdetails.displayName,
+        "imgUrl": userdetails.photoURL,
+        "id": userdetails.uid,
+      };
+      FirebaseFirestore.instance.collection("User").doc(userdetails.uid).set(userInfoMap);
+      return userdetails;
+}
+}else{
+final GoogleSignIn googleSignIn= GoogleSignIn();
 
     final GoogleSignInAccount? googleSignInAccount= await googleSignIn.signIn();
 
@@ -41,6 +58,7 @@ class AuthMService{
       FirebaseFirestore.instance.collection("User").doc(userdetails.uid).set(userInfoMap);
       return userdetails;
     }
+}
     } catch (e) {
       debugPrint(e.toString());
     }

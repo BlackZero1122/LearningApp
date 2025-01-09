@@ -20,19 +20,25 @@ class QuestionListAdapter extends TypeAdapter<QuestionList> {
       id: fields[0] as String?,
       question: fields[1] as String?,
       image: fields[2] as String?,
+      description: fields[3] as String?,
+      tts_description: fields[4] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, QuestionList obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(5)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
       ..write(obj.question)
       ..writeByte(2)
-      ..write(obj.image);
+      ..write(obj.image)
+      ..writeByte(3)
+      ..write(obj.description)
+      ..writeByte(4)
+      ..write(obj.tts_description);
   }
 
   @override

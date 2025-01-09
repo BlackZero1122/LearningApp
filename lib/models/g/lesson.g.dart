@@ -28,13 +28,16 @@ class LessonAdapter extends TypeAdapter<Lesson> {
       lessonEnable: fields[8] as String?,
       activities: (fields[9] as List?)?.cast<Activity>(),
       totalActivities: fields[10] as num?,
+      description: fields[11] as String?,
+      tts_description: fields[12] as String?,
+      skill: fields[13] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, Lesson obj) {
     writer
-      ..writeByte(11)
+      ..writeByte(14)
       ..writeByte(0)
       ..write(obj.title)
       ..writeByte(1)
@@ -56,7 +59,13 @@ class LessonAdapter extends TypeAdapter<Lesson> {
       ..writeByte(9)
       ..write(obj.activities)
       ..writeByte(10)
-      ..write(obj.totalActivities);
+      ..write(obj.totalActivities)
+      ..writeByte(11)
+      ..write(obj.description)
+      ..writeByte(12)
+      ..write(obj.tts_description)
+      ..writeByte(13)
+      ..write(obj.skill);
   }
 
   @override

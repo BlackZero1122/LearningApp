@@ -7,6 +7,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:hive_flutter/adapters.dart';
 import 'package:learning_app/custom_widgets/session_listener.dart';
+import 'package:learning_app/firebase_options.dart';
 import 'package:learning_app/helpers/app_localizations.dart';
 import 'package:learning_app/helpers/life_cycle_observer.dart';
 import 'package:learning_app/helpers/locator.dart';
@@ -36,9 +37,9 @@ void main() async {
     () async {
       BindingBase.debugZoneErrorsAreFatal = true;
       WidgetsFlutterBinding.ensureInitialized();
-      if(Platform.isAndroid || Platform.isIOS){
-        await Firebase.initializeApp();
-      }
+      await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
       EasyLoading.instance
         ..displayDuration = const Duration(milliseconds: 2000)
         ..indicatorType = EasyLoadingIndicatorType.pulse
@@ -59,8 +60,9 @@ void main() async {
       await configSettings();
       FlutterError.onError = (FlutterErrorDetails details) {
         FlutterError.dumpErrorToConsole(details);
-        locator<LoggingService>()
-            .logError('Uncaught app exception', details.exception, details.stack);
+        debugPrint(details.exception.toString());
+        // locator<LoggingService>()
+        //     .logError('Uncaught app exception', details.exception, details.stack);
       };
       PlatformDispatcher.instance.onError = (error, stack) {
         return true;
@@ -71,8 +73,9 @@ void main() async {
               ]).then((value) => runApp(const LifecycleObserver(child: MyApp()))));
     },
     (Object error, StackTrace stack) {
-      locator<LoggingService>()
-          .logError('Uncaught app exception', error, stack);
+      debugPrint(error.toString());
+      // locator<LoggingService>()
+      //     .logError('Uncaught app exception', error, stack);
     },
   );
 }
@@ -88,8 +91,10 @@ Future configSettings() async {
   // Init Viewmodels
   
   // Init Repos
-  final appDocumentDirectory = await path_provider.getApplicationDocumentsDirectory();
-  Hive.init("${appDocumentDirectory.path}/learning_app");
+  if(!kIsWeb){
+    final appDocumentDirectory = await path_provider.getApplicationDocumentsDirectory();
+    Hive.init("${appDocumentDirectory.path}/learning_app");
+  }
   await locator<IHiveService<Todo>>().init();
   await locator<IHiveService<User>>().init();
   await locator<IHiveService<Subject>>().init();

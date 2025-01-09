@@ -36,13 +36,16 @@ class ActivityAdapter extends TypeAdapter<Activity> {
       completePercent: fields[16] as num?,
       assessment: fields[17] as Assessment?,
       rules: fields[18] as Rules?,
+      description: fields[19] as String?,
+      tts_description: fields[20] as String?,
+      skill: fields[21] as String?,
     );
   }
 
   @override
   void write(BinaryWriter writer, Activity obj) {
     writer
-      ..writeByte(19)
+      ..writeByte(22)
       ..writeByte(0)
       ..write(obj.activityId)
       ..writeByte(1)
@@ -80,7 +83,13 @@ class ActivityAdapter extends TypeAdapter<Activity> {
       ..writeByte(17)
       ..write(obj.assessment)
       ..writeByte(18)
-      ..write(obj.rules);
+      ..write(obj.rules)
+      ..writeByte(19)
+      ..write(obj.description)
+      ..writeByte(20)
+      ..write(obj.tts_description)
+      ..writeByte(21)
+      ..write(obj.skill);
   }
 
   @override
