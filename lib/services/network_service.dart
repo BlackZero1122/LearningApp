@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:simple_connection_checker/simple_connection_checker.dart';
 
 class NetworkService implements INetworkService {
@@ -5,7 +6,11 @@ class NetworkService implements INetworkService {
 
   @override
   Future<bool> get isConnected async {
-    return await SimpleConnectionChecker.isConnectedToInternet();
+    if(kIsWeb){
+      return true;
+    }else{
+      return await SimpleConnectionChecker.isConnectedToInternet();
+    }
   }
 
   @override

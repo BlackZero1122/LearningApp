@@ -60,23 +60,24 @@ class StartupViewModel extends BaseViewModel {
                 thumbnail: "",
                 title: "English 101",
                 subject: "English",
-                courseId: "001",
+                courseId: "001", tts_description: "English",
                 courseName: "English 101",
                 lessons: [
-                  Lesson(title: 'Lesson 1', subjectId: "001", id:"001001", topicId: "001001", sequence: 0, enable: true, thumbnail: "", totalActivities: 0, activities: [
-                    Activity(activityId: "001001001", id: "001001001", lessonId: "001001", subjectId: "001", title: "Activity 1", topic: "Topic 1", activityType: 2, activityTypeString: "Video", content: "https://shama.nrschools.net/core/upload/content/Grade_2/Math/Fall/1-G2_M_F_NumberCrunches.mp4", grade: 0, subject: 0, semester: 0, session: 0, thumbnail: "", sequence: 0, readCount: 0, assessment: null, rules: Rules(maxReadCount: 1, trackActivityProgress: true)),
-                    Activity(activityId: "001001002", id: "001001002", lessonId: "001001", subjectId: "001", title: "Activity 2", topic: "Topic 1", activityType: 7, activityTypeString: "Quiz", content: "", grade: 0, subject: 0, semester: 0, session: 0, thumbnail: "", sequence: 0, readCount: 0, assessment: Assessment(
+                  Lesson(tts_description: "Lesson 1",title: 'Lesson 1', subjectId: "001", id:"001001", topicId: "001001", sequence: 0, enable: true, thumbnail: "", totalActivities: 0, activities: [
+                    Activity(tts_description: "Activity 1", activityId: "001001001", id: "001001001", lessonId: "001001", subjectId: "001", title: "Activity 1", topic: "Topic 1", activityType: 2, activityTypeString: "Video", content: "https://shama.nrschools.net/core/upload/content/Grade_2/Math/Fall/1-G2_M_F_NumberCrunches.mp4", grade: 0, subject: 0, semester: 0, session: 0, thumbnail: "", sequence: 0, readCount: 0, assessment: null, rules: Rules(maxReadCount: 1, trackActivityProgress: true)),
+                    Activity(tts_description: "Activity 2", activityId: "001001002", id: "001001002", lessonId: "001001", subjectId: "001", title: "Activity 2", topic: "Topic 1", activityType: 7, activityTypeString: "Quiz", content: "", grade: 0, subject: 0, semester: 0, session: 0, thumbnail: "", sequence: 0, readCount: 0, assessment: Assessment(
                       noOfQuizToAsk: 3,
                       correctNoOfQuizToPass: 1,
                       isRequired: true,
                       maxTryAttempts: 3,
                       quizzes: [
-                        Quiz(quizType: "MultipleChoice", id: "0010010021", image: "", question: "What is 8 + 9 - 2 =", answerList: [AnswerList(id: "00100100211", answer: "14", image: "", isCorrect: false), AnswerList(id: "00100100212", answer: "15", image: "", isCorrect: true), AnswerList(id: "00100100213", answer: "13", image: "", isCorrect: false), AnswerList(id: "00100100214", answer: "16", image: "", isCorrect: false)], questionList: []),
-                        Quiz(quizType: "FillInBlank", id: "0010010022", image: "", question: "8 + 9 - 2 = ______", answerList: [AnswerList(id: "00100100221", answer: "15", image: "", isCorrect: true)], questionList: []),
-                        Quiz(quizType: "TrueFalse", id: "0010010023", image: "", question: "98 - 90 + 2 + 7 = 20.", answerList: [AnswerList(id: "00100100231", answer: "Yes", image: "", isCorrect: false), AnswerList(id: "00100100232", answer: "No", image: "", isCorrect: true)], questionList: []),
+                        Quiz(tts_description: "What is 8 + 9 - 2?", quizType: "MultipleChoice", id: "0010010021", image: "https://shama.nrschools.net/core/upload/quiz/1725263030Number1-5.jpg", question: "What is 8 + 9 - 2 =", answerList: [AnswerList(id: "00100100211", tts_description: "14", answer: "14", image: "https://shama.nrschools.net/core/upload/quiz/17272794821_img7.jpg", isCorrect: false), AnswerList(id: "00100100212", tts_description: "15", answer: "15", image: "https://shama.nrschools.net/core/upload/quiz/17272794822_img9.jpg", isCorrect: true), AnswerList(id: "00100100213", tts_description: "13", answer: "13", image: "https://shama.nrschools.net/core/upload/quiz/17272794823_img6.jpg", isCorrect: false), AnswerList(id: "00100100214", tts_description: "16", answer: "16", image: "https://shama.nrschools.net/core/upload/quiz/17272794824_img5.jpg", isCorrect: false)], questionList: []),
+                        Quiz(quizType: "FillInBlank", id: "0010010022", image: "https://shama.nrschools.net/core/upload/quiz/1723659737Untitled design (54).png", question: "8 + 9 - 2 = ______", answerList: [AnswerList(id: "00100100221", answer: "15", image: "", isCorrect: true)], questionList: []),
+                        Quiz(quizType: "ShortAnswer", id: "0010010022", image: "https://shama.nrschools.net/core/upload/quiz/1723659737Untitled design (54).png", question: "8 + 9 - 2 = ______", answerList: [AnswerList(id: "00100100221", answer: "15", image: "", isCorrect: true)], questionList: []),
+                        Quiz(quizType: "TrueFalse", id: "0010010023", image: "https://shama.nrschools.net/core/upload/quiz/1724393752Untitled design (12).png", question: "98 - 90 + 2 + 7 = 20.", answerList: [AnswerList(id: "00100100231", tts_description: "Yes", answer: "Yes", image: "", isCorrect: false), AnswerList(id: "00100100232", tts_description: "No", answer: "No", image: "", isCorrect: true)], questionList: []),
                       ]
                     ), rules: Rules(maxReadCount: 1, trackActivityProgress: true)),
-                    Activity(activityId: "001001003", id: "001001003", lessonId: "001001", subjectId: "001", title: "Activity 3", topic: "Topic 1", activityType: 8, activityTypeString: "YouTubeVideo", content: "https://www.youtube.com/watch?v=BBAyRBTfsOU", grade: 0, subject: 0, semester: 0, session: 0, thumbnail: "", sequence: 0, readCount: 0, assessment: null, rules: Rules(maxReadCount: 1, trackActivityProgress: true)),
+                    Activity(tts_description: "Activity 3", activityId: "001001003", id: "001001003", lessonId: "001001", subjectId: "001", title: "Activity 3", topic: "Topic 1", activityType: 8, activityTypeString: "YouTubeVideo", content: "https://www.youtube.com/watch?v=BBAyRBTfsOU", grade: 0, subject: 0, semester: 0, session: 0, thumbnail: "", sequence: 0, readCount: 0, assessment: null, rules: Rules(maxReadCount: 1, trackActivityProgress: true)),
                   ]),
                 ]
               );

@@ -22,6 +22,10 @@ class Quiz extends IHiveBaseModel<Quiz> {
     List<QuestionList>? questionList;
     @HiveField(6)
     String? answer;
+    @HiveField(7)
+    String? description;
+    @HiveField(8)
+    String? tts_description;
 
   dynamic keyId;
 
@@ -32,7 +36,7 @@ class Quiz extends IHiveBaseModel<Quiz> {
         this.question,
         this.answerList,
         this.questionList,
-        this.answer
+        this.answer, this.description, this.tts_description,
     });
 
     String get questionFull {
@@ -90,6 +94,8 @@ class Quiz extends IHiveBaseModel<Quiz> {
     }
 
     factory Quiz.fromJson(Map<String, dynamic> json) => Quiz(
+      description: json["description"],
+        tts_description: json["tts_description"],
         quizType: json["QuizType"],
         id: json["Id"],
         image: json["Image"],
@@ -104,6 +110,8 @@ class Quiz extends IHiveBaseModel<Quiz> {
 
 @override
     Map<String, dynamic> toJson() => {
+      "description": description,
+      "tts_description": tts_description,
         "QuizType": quizType,
         "Id": id,
         "answer": answer,

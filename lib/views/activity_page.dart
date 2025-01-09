@@ -210,14 +210,15 @@ class _ActivityWidgetState extends State<ActivityPage> {
               Image.asset(viewModel.currentAssessment.isPass ?"assets/images/pass.png":"assets/images/fail.png", height: 230,),
               Wrap( alignment: WrapAlignment.center, children: [
               Text("You have answered ${viewModel.currentAssessment.quizzes!.where((x)=>x.correctAnswered).length} out 0f ${viewModel.currentAssessment.quizzes!.length} questions correctly.", textAlign: TextAlign.center, style: TextStyle(color: Color(0xffc5ced9)),),
-              TextButton(onPressed: () async {
-                List<StudentAnswer> stdAnswers = [];
-                for (var item in viewModel.currentAssessment.quizzes!) {
-                  stdAnswers.add(StudentAnswer(question_id: item.id, question: item.questionFull, answer: item.answer, correct_answer: item.correctAnswer, is_correct: item.correctAnswered ));
-                }
-                //await locator<IDialogService>().showDetailResult(Result(student_answers: stdAnswers, completion: true, duration: "", response: "", success: viewModel.currentAssessment.isPass, score: Score(max: viewModel.currentAssessment.quizzes!.length, min: 0, raw: viewModel.currentAssessment.quizzes!.where((x)=>x.correctAnswered).length, scaled: 0)));
-              }, child: const Text('See Details...', style: TextStyle(color: Colors.blue),))
+              // TextButton(onPressed: () async {
+              //   List<StudentAnswer> stdAnswers = [];
+              //   for (var item in viewModel.currentAssessment.quizzes!) {
+              //     stdAnswers.add(StudentAnswer(question_id: item.id, question: item.questionFull, answer: item.answer, correct_answer: item.correctAnswer, is_correct: item.correctAnswered ));
+              //   }
+              //   await locator<IDialogService>().showDetailResult(Result(student_answers: stdAnswers, completion: true, duration: "", response: "", success: viewModel.currentAssessment.isPass, score: Score(max: viewModel.currentAssessment.quizzes!.length, min: 0, raw: viewModel.currentAssessment.quizzes!.where((x)=>x.correctAnswered).length, scaled: 0)));
+              // }, child: const Text('See Details...', style: TextStyle(color: Colors.blue),))
               ]),
+              SizedBox(height: 20,),
               Row( mainAxisAlignment: MainAxisAlignment.center, children: [
                  IconButton(
                                     onPressed: () async {
@@ -288,7 +289,7 @@ class _ActivityWidgetState extends State<ActivityPage> {
                 Padding(
                   padding: const EdgeInsets.all(20),
                   child: SingleChildScrollView(
-                    child: SizedBox( width: double.infinity, height: MediaQuery.of(context).size.height - 215,
+                    child: SizedBox( width: double.infinity, height: MediaQuery.of(context).size.height - 100,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -443,7 +444,7 @@ class _ActivityWidgetState extends State<ActivityPage> {
                 Padding(
                   padding: const EdgeInsets.all(20),
                   child: SingleChildScrollView(
-                  child: SizedBox( width: double.infinity, height: MediaQuery.of(context).size.height - 215,
+                  child: SizedBox( width: double.infinity, height: MediaQuery.of(context).size.height - 100,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center, crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
@@ -602,7 +603,7 @@ class _ActivityWidgetState extends State<ActivityPage> {
                 Padding(
                                   padding: const EdgeInsets.all(20),
                                   child: SingleChildScrollView(
-                  child: SizedBox( width: double.infinity, height: MediaQuery.of(context).size.height - 215,
+                  child: SizedBox( width: double.infinity, height: MediaQuery.of(context).size.height - 100,
                                       child: Column(
                                                       mainAxisAlignment: MainAxisAlignment.center,
                                                       children: [
@@ -766,7 +767,7 @@ class _ActivityWidgetState extends State<ActivityPage> {
                 Padding(
                                   padding: const EdgeInsets.all(20),
                                   child: SingleChildScrollView(
-                  child: SizedBox( width: double.infinity, height: MediaQuery.of(context).size.height - 215,
+                  child: SizedBox( width: double.infinity, height: MediaQuery.of(context).size.height - 100,
                                       child: Column(
                                                       crossAxisAlignment: CrossAxisAlignment.start,
                                                       mainAxisAlignment: MainAxisAlignment.center,
@@ -780,10 +781,10 @@ class _ActivityWidgetState extends State<ActivityPage> {
                                                                   children: [
                                                                     const SizedBox(
                                                                       width: 40,
-                                                                      child: Text('Q :'),
+                                                                      child: Text('Q :', style: const TextStyle(fontSize: 18, color: Color(0xffc5ced9)),),
                                                                     ),
                                                                     Expanded(
-                                                                      child: Text(currentQuiz.question!),
+                                                                      child: Text(currentQuiz.question!, style: const TextStyle(fontSize: 18, color: Color(0xffc5ced9)),),
                                                                     )
                                                                   ],
                                                                 ),
@@ -795,7 +796,7 @@ class _ActivityWidgetState extends State<ActivityPage> {
                                                                   children: [
                                                                     const SizedBox(
                                                                       width: 40,
-                                                                      child: Text('A :'),
+                                                                      child: Text('A :', style: const TextStyle(fontSize: 18, color: Color(0xffc5ced9)),),
                                                                     ),
                                                                     Expanded(
                                                                       child: CustomTextField(controller: answerController, focusNode: FocusNode(), textAlign: TextAlign.left, maxLines:3),)
@@ -922,7 +923,7 @@ class _ActivityWidgetState extends State<ActivityPage> {
                 Padding(
                                   padding: const EdgeInsets.all(20),
                                   child: SingleChildScrollView(
-                  child: SizedBox( width: double.infinity, height: MediaQuery.of(context).size.height - 215,
+                  child: SizedBox( width: double.infinity, height: MediaQuery.of(context).size.height - 100,
                                       child: Column(
                                                       mainAxisAlignment: MainAxisAlignment.center,
                                                       children: [
@@ -1082,7 +1083,7 @@ class _ActivityWidgetState extends State<ActivityPage> {
               viewModel.setQuizAnswer(item);
             },
             child: Padding(
-                padding: const EdgeInsets.fromLTRB(40, 15, 40, 15),
+                padding: (item.image==null || item.image!.isEmpty ) ? const EdgeInsets.fromLTRB(40,15,40,15) : const EdgeInsets.all(10),
                 child: Center(
                     child: (item.image==null || item.image!.isEmpty ) ? Text(
                   item.answer!,
@@ -1090,13 +1091,13 @@ class _ActivityWidgetState extends State<ActivityPage> {
                       fontSize: 20,
                       color: item.selected ? Colors.white : Colors.black),
                 ):
-                Image.network(height: 80, item.image!,
+                Image.network(height: 50, item.image!,
                                 frameBuilder: (context, child, frame,
                                     wasSynchronouslyLoaded) {
                                 if (frame == null) {
                                   return const SizedBox(
-                                    width: 80,
-                                    height: 80,
+                                    width: 50,
+                                    height: 50,
                                     child: Center(
                                       child: CircularProgressIndicator(),
                                     ),
@@ -1119,8 +1120,8 @@ class _ActivityWidgetState extends State<ActivityPage> {
                                       child: child);
                                 } else {
                                   return const SizedBox(
-                                    width: 80,
-                                    height: 80,
+                                    width: 50,
+                                    height: 50,
                                     child: Center(
                                       child: CircularProgressIndicator(),
                                     ),
