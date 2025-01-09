@@ -70,11 +70,11 @@ class LessonPage extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Expanded(
-                                        child: Container(
-                                      decoration: BoxDecoration(
-                                          color: Color(0xff41435a),
-                                          borderRadius: BorderRadius.circular(5)),
-                                    )),
+                                        child: Container( clipBehavior: Clip.antiAlias,
+                                  decoration: (viewModel.getSelectedLesson?.activities?[index].thumbnail==null || viewModel.getSelectedLesson!.activities![index].thumbnail!.isEmpty) ? BoxDecoration(
+                                      color: Color(0xff41435a),
+                                      borderRadius: BorderRadius.circular(5)) : BoxDecoration(image: DecorationImage(fit: BoxFit.cover, image: NetworkImage(viewModel.getSelectedLesson!.activities![index].thumbnail!))),
+                                )),
                                     SizedBox(
                                       height: 5,
                                     ),

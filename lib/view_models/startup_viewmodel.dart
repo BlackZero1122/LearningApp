@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:learning_app/helpers/locator.dart';
 import 'package:learning_app/models/hive_models/activity.dart';
 import 'package:learning_app/models/hive_models/answer_list.dart';
@@ -52,8 +53,30 @@ class StartupViewModel extends BaseViewModel {
             args: TransitionType.fade,
           );
         } else {
-
-              var engSubject = Subject(
+            await getSubjects();
+             
+          _navigationService.pushNamedAndRemoveUntil(
+                Routes.home,
+                args: TransitionType.fade,
+              );
+        }
+      //}
+    } catch (e,s) {
+      _globalService.logError("Error Occured on Startup Logic", e.toString(), s);
+      debugPrint(e.toString());
+    } finally {
+      await loading(false);
+    }
+  }
+  
+  Future<void> getSubjects() async {
+    try {
+      // var response =
+      //     await rootBundle.loadString('assets/json/subject.json');
+      // Iterable l = json.decode(response);
+      // var sub = List<Subject>.from(l.map((x) => Subject.fromJson(x)));
+      // await locator<IHiveService<Subject>>().addOrUpdateRange(sub);
+      var engSubject = Subject(
                 id:"001",
                 name: "English 101",
                 code: "001",
@@ -63,9 +86,9 @@ class StartupViewModel extends BaseViewModel {
                 courseId: "001", tts_description: "English",
                 courseName: "English 101",
                 lessons: [
-                  Lesson(tts_description: "Lesson 1",title: 'Lesson 1', subjectId: "001", id:"001001", topicId: "001001", sequence: 0, enable: true, thumbnail: "", totalActivities: 0, activities: [
+                  Lesson(tts_description: "Lesson 1",title: 'Lesson 1', subjectId: "001", id:"001001", topicId: "001001", sequence: 0, enable: true, thumbnail: "https://shama.nrschools.net/core/upload/quiz/1724393752Untitled design (12).png", totalActivities: 0, activities: [
                     Activity(tts_description: "Activity 1", activityId: "001001001", id: "001001001", lessonId: "001001", subjectId: "001", title: "Activity 1", topic: "Topic 1", activityType: 2, activityTypeString: "Video", content: "https://shama.nrschools.net/core/upload/content/Grade_2/Math/Fall/1-G2_M_F_NumberCrunches.mp4", grade: 0, subject: 0, semester: 0, session: 0, thumbnail: "", sequence: 0, readCount: 0, assessment: null, rules: Rules(maxReadCount: 1, trackActivityProgress: true)),
-                    Activity(tts_description: "Activity 2", activityId: "001001002", id: "001001002", lessonId: "001001", subjectId: "001", title: "Activity 2", topic: "Topic 1", activityType: 7, activityTypeString: "Quiz", content: "", grade: 0, subject: 0, semester: 0, session: 0, thumbnail: "", sequence: 0, readCount: 0, assessment: Assessment(
+                    Activity(tts_description: "Activity 2", activityId: "001001002", id: "001001002", lessonId: "001001", subjectId: "001", title: "Activity 2", topic: "Topic 1", activityType: 7, activityTypeString: "Quiz", content: "", grade: 0, subject: 0, semester: 0, session: 0, thumbnail: "https://shama.nrschools.net/core/upload/quiz/1724393752Untitled design (12).png", sequence: 0, readCount: 0, assessment: Assessment(
                       noOfQuizToAsk: 3,
                       correctNoOfQuizToPass: 1,
                       isRequired: true,
@@ -81,18 +104,10 @@ class StartupViewModel extends BaseViewModel {
                   ]),
                 ]
               );
-              await locator<IHiveService<Subject>>().addOrUpdate(engSubject);
-          _navigationService.pushNamedAndRemoveUntil(
-                Routes.home,
-                args: TransitionType.fade,
-              );
-        }
-      //}
+      await locator<IHiveService<Subject>>().addOrUpdate(engSubject);
     } catch (e,s) {
-      _globalService.logError("Error Occured on Startup Logic", e.toString(), s);
+      _globalService.logError("Error Occured!", e.toString(), s);
       debugPrint(e.toString());
-    } finally {
-      await loading(false);
     }
   }
 }

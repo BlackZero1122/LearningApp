@@ -154,10 +154,10 @@ class HomePage extends StatelessWidget {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Expanded(
-                                    child: Container(
-                                  decoration: BoxDecoration(
+                                    child: Container( clipBehavior: Clip.antiAlias,
+                                  decoration: (viewModel.getSelectedSubject?.lessons?[index].thumbnail==null || viewModel.getSelectedSubject!.lessons![index].thumbnail!.isEmpty) ? BoxDecoration(
                                       color: Color(0xff41435a),
-                                      borderRadius: BorderRadius.circular(5)),
+                                      borderRadius: BorderRadius.circular(5)) : BoxDecoration(image: DecorationImage(fit: BoxFit.cover, image: NetworkImage(viewModel.getSelectedSubject!.lessons![index].thumbnail!))),
                                 )),
                                 SizedBox(
                                   height: 5,
