@@ -2,7 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:learning_app/helpers/locator.dart';
 import 'package:learning_app/models/hive_models/activity.dart';
+import 'package:learning_app/models/hive_models/answer_list.dart';
+import 'package:learning_app/models/hive_models/assessment.dart';
 import 'package:learning_app/models/hive_models/lesson.dart';
+import 'package:learning_app/models/hive_models/quiz.dart';
+import 'package:learning_app/models/hive_models/rules.dart';
 import 'package:learning_app/models/hive_models/subject.dart';
 import 'package:learning_app/services/api_service.dart';
 import 'package:learning_app/services/db_service.dart';
@@ -58,7 +62,18 @@ class StartupViewModel extends BaseViewModel {
                 courseName: "English 101",
                 lessons: [
                   Lesson(title: 'Lesson 1', subjectId: "001", id:"001001", topicId: "001001", sequence: 0, enable: true, thumbnail: "", totalActivities: 0, activities: [
-                    Activity(activityId: "001001001", id: "001001001", lessonId: "001001", subjectId: "001", title: "Activity 1", topic: "Topic 1", activityType: 0, activityTypeString: "video", content: "", grade: 0, subject: 0, semester: 0, session: 0, thumbnail: "", sequence: 0, readCount: 0, assessment: null, rules: null)
+                    Activity(activityId: "001001001", id: "001001001", lessonId: "001001", subjectId: "001", title: "Activity 1", topic: "Topic 1", activityType: 2, activityTypeString: "Video", content: "https://shama.nrschools.net/core/upload/content/Grade_2/Math/Fall/1-G2_M_F_NumberCrunches.mp4", grade: 0, subject: 0, semester: 0, session: 0, thumbnail: "", sequence: 0, readCount: 0, assessment: null, rules: Rules(maxReadCount: 1, trackActivityProgress: true)),
+                    Activity(activityId: "001001002", id: "001001002", lessonId: "001001", subjectId: "001", title: "Activity 2", topic: "Topic 1", activityType: 7, activityTypeString: "Quiz", content: "", grade: 0, subject: 0, semester: 0, session: 0, thumbnail: "", sequence: 0, readCount: 0, assessment: Assessment(
+                      noOfQuizToAsk: 3,
+                      correctNoOfQuizToPass: 1,
+                      isRequired: true,
+                      maxTryAttempts: 3,
+                      quizzes: [
+                        Quiz(quizType: "MultipleChoice", id: "0010010021", image: "", question: "What is 8 + 9 - 2 =", answerList: [AnswerList(id: "00100100211", answer: "14", image: "", isCorrect: false), AnswerList(id: "00100100212", answer: "15", image: "", isCorrect: true), AnswerList(id: "00100100213", answer: "13", image: "", isCorrect: false), AnswerList(id: "00100100214", answer: "16", image: "", isCorrect: false)], questionList: []),
+                        Quiz(quizType: "FillInBlank", id: "0010010022", image: "", question: "8 + 9 - 2 = ______", answerList: [AnswerList(id: "00100100221", answer: "15", image: "", isCorrect: true)], questionList: []),
+                        Quiz(quizType: "TrueFalse", id: "0010010023", image: "", question: "98 - 90 + 2 + 7 = 20.", answerList: [AnswerList(id: "00100100231", answer: "Yes", image: "", isCorrect: false), AnswerList(id: "00100100232", answer: "No", image: "", isCorrect: true)], questionList: []),
+                      ]
+                    ), rules: Rules(maxReadCount: 1, trackActivityProgress: true))
                   ]),
                   Lesson(title: 'Lesson 2', subjectId: "001", id:"002001", topicId: "002001", sequence: 1, enable: true, thumbnail: "", totalActivities: 0, activities: []),
                   Lesson(title: 'Lesson 3', subjectId: "001", id:"003001", topicId: "003001", sequence: 2, enable: true, thumbnail: "", totalActivities: 0, activities: [])

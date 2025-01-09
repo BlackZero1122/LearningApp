@@ -5,6 +5,7 @@ import 'package:learning_app/custom_widgets/custom_button.dart';
 import 'package:learning_app/custom_widgets/side_drawer.dart.dart';
 import 'package:learning_app/custom_widgets/stateful_wrapper.dart';
 import 'package:learning_app/helpers/locator.dart';
+import 'package:learning_app/models/hive_models/lesson.dart';
 import 'package:learning_app/services/global_service.dart';
 import 'package:learning_app/services/navigation_service.dart';
 import 'package:learning_app/view_models/home_view_model.dart';
@@ -23,7 +24,7 @@ class HomePage extends StatelessWidget {
       },
       onInit: () {
         WidgetsBinding.instance
-            .addPostFrameCallback((_) => viewModel.getData());
+            .addPostFrameCallback((_) => viewModel.getData(0));
       },
       child: Scaffold(
           key: scaffoldKey,
@@ -53,7 +54,7 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                    child: viewModel.listSpinner ? Center(child: CircularProgressIndicator(color: Color(0xffc5ced9),)) : viewModel.subjects[viewModel.currentSubjectIndex].lessons!.isEmpty ? Center(child: Text('No Lessons :/', style: TextStyle(color: Color(0xffc5ced9)),)) : GridView.builder(
+                    child: viewModel.listSpinner ? Center(child: CircularProgressIndicator(color: Color(0xffc5ced9),)) : (viewModel.getSelectedSubject?.lessons??[]).isEmpty ? Center(child: Text('No Lessons :/', style: TextStyle(color: Color(0xffc5ced9)),)) : GridView.builder(
                   primary: false,
                   padding: const EdgeInsets.all(15),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -61,7 +62,7 @@ class HomePage extends StatelessWidget {
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
                   ),
-                  itemCount: viewModel.subjects[viewModel.currentSubjectIndex].lessons!.length,
+                  itemCount: viewModel.getSelectedSubject!.lessons!.length,
                   itemBuilder: (context, index) {
                     return Card(
                       shape: RoundedRectangleBorder(
@@ -69,7 +70,7 @@ class HomePage extends StatelessWidget {
                       color: Color(0xff363749),
                       child: InkWell(
                       onTap: () {
-                        viewModel.selectLesson(index);
+                        viewModel.selectLesson(index, null);
                       },
                         child: Padding(
                           padding: EdgeInsets.all(15),
@@ -90,13 +91,13 @@ class HomePage extends StatelessWidget {
                                 children: [
                                   Expanded(
                                       child: Text(
-                                    viewModel.subjects[viewModel.currentSubjectIndex].lessons?[index].title??"N/A",
+                                    viewModel.getSelectedSubject?.lessons?[index].title??"N/A",
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                         color: Color(0xffc5ced9), fontSize: 14),
                                   )),
-                                  (viewModel.subjects[viewModel.currentSubjectIndex].lessons?[index].completed??false) ? Icon(
+                                  (viewModel.getSelectedSubject?.lessons?[index].completed??false) ? Icon(
                                     Icons.check_circle,
                                     color: Colors.greenAccent,
                                   ) : SizedBox()

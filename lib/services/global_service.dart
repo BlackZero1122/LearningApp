@@ -14,6 +14,18 @@ class GlobalService {
     _isProduction = isProduction;
   }
 
+  bool _connectedToInternet=true;
+  bool get connectedToInternet => _connectedToInternet;
+  setConnectedToInternet(bool connectedToInternet) async {
+    _connectedToInternet = connectedToInternet;
+  }
+
+  bool _unlockActivities=true;
+  bool get unlockActivities => _unlockActivities;
+  setUnlockActivities(bool unlockActivities) async {
+    _unlockActivities = unlockActivities;
+  }
+
   User? _user;
 
   User? get user => _user;

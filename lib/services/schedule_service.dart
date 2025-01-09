@@ -55,7 +55,7 @@ class ScheduleService {
     }
   }
 
-  bool checkInternetConnectionInProgress = false;
+   bool checkInternetConnectionInProgress = false;
   Future<void> checkInternetConnection() async {
     if (checkInternetConnectionInProgress) {
       return;
@@ -66,7 +66,20 @@ class ScheduleService {
       map['val0'] = RootIsolateToken.instance!;
       var data = await compute(_checkInternetConnectionInBackground, map);
       if (data['val0'] != null) {
-        _appStatusBarViewModel.setConnectedToInternet(data['val0']);
+        if(data['val0']){
+          if(!_globalService.connectedToInternet){
+            _globalService.log("Connected To Internet");
+            _globalService.setConnectedToInternet(true);
+            _appStatusBarViewModel.setConnectedToInternet(true);
+          }
+        }
+        else{
+          if(_globalService.connectedToInternet){
+            _globalService.log("Disconnect From Internet");
+            _globalService.setConnectedToInternet(false);
+            _appStatusBarViewModel.setConnectedToInternet(false);
+          }
+        }
       }
     } catch (e, s) {
       _globalService.logError("Error Occured When Check for Internet Connection", e.toString(), s);

@@ -26,10 +26,10 @@ class LessonPage extends StatelessWidget {
         backgroundColor: Color(0xff262835),
         body: Column(
             children: [
-              AppTopBar(text: viewModel.subjects[viewModel.currentSubjectIndex].lessons![viewModel.currentLessonIndex].title!,isMain: false,),
+              AppTopBar(text: viewModel.getSelectedLesson!.title!,isMain: false,),
               const SizedBox(height: 1,),
               Expanded(
-                    child: viewModel.listSpinner ? Center(child: CircularProgressIndicator(color: Color(0xffc5ced9),)) : viewModel.subjects[viewModel.currentSubjectIndex].lessons![viewModel.currentLessonIndex].activities!.isEmpty ? Center(child: Text('No Acrtivities :/', style: TextStyle(color: Color(0xffc5ced9)),)) : GridView.builder(
+                    child: viewModel.listSpinner ? Center(child: CircularProgressIndicator(color: Color(0xffc5ced9),)) : (viewModel.getSelectedLesson?.activities??[]).isEmpty ? Center(child: Text('No Acrtivities :/', style: TextStyle(color: Color(0xffc5ced9)),)) : GridView.builder(
                   primary: false,
                   padding: const EdgeInsets.all(15),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -37,7 +37,7 @@ class LessonPage extends StatelessWidget {
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
                   ),
-                  itemCount: viewModel.subjects[viewModel.currentSubjectIndex].lessons![viewModel.currentLessonIndex].activities!.length,
+                  itemCount: viewModel.getSelectedLesson?.activities!.length,
                   itemBuilder: (context, index) {
                     return Card(
                       shape: RoundedRectangleBorder(
@@ -66,13 +66,13 @@ class LessonPage extends StatelessWidget {
                                 children: [
                                   Expanded(
                                       child: Text(
-                                    viewModel.subjects[viewModel.currentSubjectIndex].lessons?[viewModel.currentLessonIndex].activities?[index].title??"N/A",
+                                    viewModel.getSelectedLesson?.activities?[index].title??"N/A",
                                     maxLines: 2,
                                     overflow: TextOverflow.ellipsis,
                                     style: TextStyle(
                                         color: Color(0xffc5ced9), fontSize: 14),
                                   )),
-                                  (viewModel.subjects[viewModel.currentSubjectIndex].lessons?[viewModel.currentLessonIndex].activities?[index].completed??false) ? Icon(
+                                  (viewModel.getSelectedLesson?.activities?[index].completed??false) ? Icon(
                                     Icons.check_circle,
                                     color: Colors.greenAccent,
                                   ) : SizedBox()

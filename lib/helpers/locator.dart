@@ -24,6 +24,7 @@ import 'package:learning_app/services/navigation_service.dart';
 import 'package:learning_app/services/network_service.dart';
 import 'package:learning_app/services/pref_service.dart';
 import 'package:learning_app/services/schedule_service.dart';
+import 'package:learning_app/view_models/activity_view_model.dart';
 import 'package:learning_app/view_models/app_status_bar_view_model.dart';
 import 'package:learning_app/view_models/authentication_view_model.dart';
 import 'package:learning_app/view_models/home_view_model.dart';
@@ -59,6 +60,7 @@ class LocatorInjector {
     locator.registerLazySingleton(() => UserViewModel());
     locator.registerLazySingleton(() => SideDrawerViewModel());
     locator.registerLazySingleton(() => AppStatusBarViewModel());
+    locator.registerLazySingleton(() => ActivityViewModel());
 
     // Repos
     locator.registerLazySingleton<IHiveService<Todo>>(() => TodoRepo());
