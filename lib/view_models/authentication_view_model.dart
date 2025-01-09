@@ -88,10 +88,10 @@ class AuthenticationViewModel extends BaseViewModel {
     }
   }
 
-  void signup(String name, String email, String password) async {
+  void signup(String name, String email, String password, String gender) async {
     try {
       await loading(true);
-      var result = await _apiService.signup(name, email, password);
+      var result = await _apiService.signup(name, email, password, gender);
             if (result.errorCode == "PA0004") {
               _dialogService.showToast(Message(description: "Account Created Successfuly."));
               locator<NavigationService>().pushNamedAndRemoveUntil(

@@ -2,6 +2,7 @@ import "dart:async";
 import "dart:convert";
 import "dart:io";
 
+import "package:cloud_firestore/cloud_firestore.dart";
 import 'package:firebase_auth/firebase_auth.dart';
 import "package:flutter/foundation.dart";
 import "package:flutter/material.dart";
@@ -78,13 +79,25 @@ class APIService implements IAPIService {
   }
 
   @override
-  Future<ApiStatus> signup(String name, String email, String password) async {
+  Future<ApiStatus> signup(String name, String email, String password, String gender) async {
     if (await _networkService.isConnected) {
       try {
+        FirebaseFirestore firestore = FirebaseFirestore.instance;
         if(Platform.isAndroid || Platform.isIOS){
           try{
           await FirebaseAuth.instance
             .createUserWithEmailAndPassword(email: email, password: password);
+            User? user = FirebaseAuth.instance.currentUser;
+          // Add user details
+          if(user!=null){
+            await firestore.collection('users').doc(user.uid).set({
+      'name': name,
+      'gender': "gender",
+      'email': user.email, // Optional: Store user email
+      'createdAt': FieldValue.serverTimestamp(), // Timestamp for user creation
+    });
+          }
+    
       return ApiStatus(
               data: null,
               errorCode: "PA0004",
@@ -140,5 +153,5 @@ class APIService implements IAPIService {
 
 abstract class IAPIService {
   Future<ApiStatus> login(String email, String password);
-  Future<ApiStatus> signup(String name, String email, String password);
+  Future<ApiStatus> signup(String name, String email, String password, String gender);
 }
