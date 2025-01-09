@@ -113,6 +113,8 @@ class LoginPage extends StatelessWidget {
                           ),),
                           Align( alignment: Alignment.bottomCenter,
                             child: SizedBox(height: 60, width: 250, child: InkWell(onTap: () {
+                              viewModel.setShowPassword(false);
+                                viewModel.setShowConfirmPassword(false);
                               locator<NavigationService>().pushNamedAndRemoveUntil(
                       Routes.signup,
                       args: TransitionType.fade,

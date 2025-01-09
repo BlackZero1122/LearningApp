@@ -17,6 +17,7 @@ import 'package:learning_app/models/hive_models/score.dart';
 import 'package:learning_app/models/hive_models/student_answer.dart';
 import 'package:learning_app/services/dialog_service.dart';
 import 'package:learning_app/services/global_service.dart';
+import 'package:learning_app/services/tts_service.dart';
 import 'package:learning_app/view_models/activity_view_model.dart';
 import 'package:learning_app/view_models/home_view_model.dart';
 import 'package:provider/provider.dart';
@@ -342,9 +343,14 @@ class _ActivityWidgetState extends State<ActivityPage> {
                           const SizedBox(
                             height: 15,
                           ),
-                          Text(
+                          Row(children: [
+                            Text(
                               style: const TextStyle(fontSize: 26, color: Color(0xffc5ced9)),
                               currentQuiz.question!),
+                            (currentQuiz.tts_description??"").isNotEmpty ? IconButton(onPressed: () async {
+                              await locator<TTSService>().speak(currentQuiz.tts_description!);
+                            }, icon: Icon(Icons.speaker),) : SizedBox()
+                          ],),
                           const SizedBox(
                             height: 15,
                           ),
@@ -497,9 +503,14 @@ class _ActivityWidgetState extends State<ActivityPage> {
                           const SizedBox(
                             height: 15,
                           ),
-                          Text(
+                          Row(children: [
+                            Text(
                               style: const TextStyle(fontSize: 26, color: Color(0xffc5ced9)),
                               currentQuiz.question!),
+                            (currentQuiz.tts_description??"").isNotEmpty ? IconButton(onPressed: () async {
+                              await locator<TTSService>().speak(currentQuiz.tts_description!);
+                            }, icon: Icon(Icons.speaker),) : SizedBox()
+                          ],),
                           const SizedBox(
                             height: 15,
                           ),
@@ -656,10 +667,14 @@ class _ActivityWidgetState extends State<ActivityPage> {
                                                           const SizedBox(
                                                             height: 15,
                                                           ),
-                                                        Text(
-                                                          currentQuiz.question!,
-                                                          style: const TextStyle(fontSize: 18, color: Color(0xffc5ced9)),
-                                                        ),
+                                                        Row(children: [
+                            Text(
+                              style: const TextStyle(fontSize: 26, color: Color(0xffc5ced9)),
+                              currentQuiz.question!),
+                            (currentQuiz.tts_description??"").isNotEmpty ? IconButton(onPressed: () async {
+                              await locator<TTSService>().speak(currentQuiz.tts_description!);
+                            }, icon: Icon(Icons.speaker),) : SizedBox()
+                          ],),
                                                         const SizedBox(
                                                           height: 15,
                                                         ),
@@ -784,7 +799,14 @@ class _ActivityWidgetState extends State<ActivityPage> {
                                                                       child: Text('Q :', style: const TextStyle(fontSize: 18, color: Color(0xffc5ced9)),),
                                                                     ),
                                                                     Expanded(
-                                                                      child: Text(currentQuiz.question!, style: const TextStyle(fontSize: 18, color: Color(0xffc5ced9)),),
+                                                                      child: Row(children: [
+                            Text(
+                              style: const TextStyle(fontSize: 26, color: Color(0xffc5ced9)),
+                              currentQuiz.question!),
+                            (currentQuiz.tts_description??"").isNotEmpty ? IconButton(onPressed: () async {
+                              await locator<TTSService>().speak(currentQuiz.tts_description!);
+                            }, icon: Icon(Icons.speaker),) : SizedBox()
+                          ],),
                                                                     )
                                                                   ],
                                                                 ),

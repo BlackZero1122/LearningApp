@@ -16,6 +16,7 @@ import 'package:learning_app/services/error_reporting_service.dart';
 import 'package:learning_app/services/global_service.dart';
 import 'package:learning_app/services/navigation_service.dart';
 import 'package:learning_app/services/pref_service.dart';
+import 'package:learning_app/services/tts_service.dart';
 import 'package:learning_app/view_models/activity_view_model.dart';
 import 'package:learning_app/view_models/base_view_model.dart';
 import 'package:learning_app/view_models/side_drawer_view_model.dart';
@@ -203,6 +204,9 @@ class HomeViewModel extends BaseViewModel {
           setLessons(lessons);
           for (var element in lessons) { element.selected=false; }
           lessons[index].selected=true;
+          if((lessons[index].tts_description??"").isNotEmpty){
+            await locator<TTSService>().speak(lessons[index].tts_description!);
+          }
           var activities = lessons[index].activities;
           if(activities!=null && activities.isNotEmpty){
              setActivities(activities);
@@ -248,6 +252,9 @@ class HomeViewModel extends BaseViewModel {
        if(activities.isNotEmpty){
         for (var element in activities) { element.selected=false; }
         activities[index].selected=true;
+        if((activities[index].tts_description??"").isNotEmpty){
+            await locator<TTSService>().speak(activities[index].tts_description!);
+          }
         activities[index].lsnId=getSelectedLesson!.topicId;
         activities[index].subId=getSelectedSubject!.courseId;
         await _activityViewModel.init(activities[index]);

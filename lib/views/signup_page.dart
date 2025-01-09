@@ -111,7 +111,7 @@ class SignUpPage extends StatelessWidget {
                                                 },controller: emailController, fillColor: Color(0xffc5ced9), hintText: "Email...",),
                                     SizedBox(height: 20,),
                                     Text('Password', style: TextStyle(color: Color(0xffc5ced9)),),
-                                    DefaultTextInput(validator: (value) {
+                                    DefaultTextInput( validator: (value) {
                                                   if (value == null || value.isEmpty) {
                                                     return "Please enter password.";
                                                   }
@@ -119,7 +119,9 @@ class SignUpPage extends StatelessWidget {
                                                       return "Please enter valid password.";
                                                     }
                                                   return null;
-                                                },controller: passwordController, fillColor: Color(0xffc5ced9), hintText: "Password...", isPassword: true,),
+                                                },controller: passwordController, fillColor: Color(0xffc5ced9), hintText: "Password...", secureText: !viewModel.getShowPassword, isPassword: true, onEyePressed: () {
+                                        viewModel.setShowPassword(!viewModel.getShowPassword);
+                                      }, showPassword: viewModel.getShowPassword,),
                                     SizedBox(height: 20,),
                                     Text('Confirm Password', style: TextStyle(color: Color(0xffc5ced9)),),
                                     DefaultTextInput(validator: (value) {
@@ -130,7 +132,9 @@ class SignUpPage extends StatelessWidget {
                                                       return "Password not match.";
                                                     }
                                                   return null;
-                                                },controller: confirmPasswordController, fillColor: Color(0xffc5ced9), hintText: "Confirm Password...", isPassword: true,),
+                                                },controller: confirmPasswordController, fillColor: Color(0xffc5ced9), hintText: "Confirm Password...", secureText: !viewModel.getShowConfirmPassword, isPassword: true, onEyePressed: () {
+                                        viewModel.setShowConfirmPassword(!viewModel.getShowConfirmPassword);
+                                      }, showPassword: viewModel.getShowConfirmPassword,),
                                     SizedBox(height: 20,),
                                     SizedBox( width: double.infinity,
                                       child: CustomButton(onTap: () {
@@ -146,6 +150,8 @@ class SignUpPage extends StatelessWidget {
                             ),
                             Align( alignment: Alignment.bottomCenter,
                               child: SizedBox(height: 60, width: 250, child: InkWell(onTap: () {
+                                viewModel.setShowPassword(false);
+                                viewModel.setShowConfirmPassword(false);
                                 locator<NavigationService>().pushNamedAndRemoveUntil(
                         Routes.login,
                         args: TransitionType.fade,

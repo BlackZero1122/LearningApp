@@ -23,13 +23,13 @@ class AuthMService{
   UserCredential result = await firebaseAuth.signInWithPopup(provider);
   User? userdetails= result.user;
 if(userdetails!=null){
-      Map<String, dynamic> userInfoMap={
-        "email": userdetails.email,
-        "name": userdetails.displayName,
-        "imgUrl": userdetails.photoURL,
-        "id": userdetails.uid,
-      };
-      FirebaseFirestore.instance.collection("User").doc(userdetails.uid).set(userInfoMap);
+      await FirebaseFirestore.instance.collection('users').doc(userdetails.uid).set({
+                'name': userdetails.displayName,
+                'gender': "Male",
+                'email': userdetails.email, // Optional: Store user email
+                'createdAt':
+                    FieldValue.serverTimestamp(), // Timestamp for user creation
+              });
       return userdetails;
 }
 }else{
@@ -49,13 +49,13 @@ final GoogleSignIn googleSignIn= GoogleSignIn();
     User? userdetails= result.user;
 
     if(userdetails!=null){
-      Map<String, dynamic> userInfoMap={
-        "email": userdetails.email,
-        "name": userdetails.displayName,
-        "imgUrl": userdetails.photoURL,
-        "id": userdetails.uid,
-      };
-      FirebaseFirestore.instance.collection("User").doc(userdetails.uid).set(userInfoMap);
+       await FirebaseFirestore.instance.collection('users').doc(userdetails.uid).set({
+                'name': userdetails.displayName,
+                'gender': "Male",
+                'email': userdetails.email, // Optional: Store user email
+                'createdAt':
+                    FieldValue.serverTimestamp(), // Timestamp for user creation
+              });
       return userdetails;
     }
 }

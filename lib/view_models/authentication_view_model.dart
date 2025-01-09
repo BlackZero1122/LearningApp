@@ -19,6 +19,7 @@ import 'package:learning_app/services/error_reporting_service.dart';
 import 'package:learning_app/services/global_service.dart';
 import 'package:learning_app/services/navigation_service.dart';
 import 'package:learning_app/services/pref_service.dart';
+import 'package:learning_app/services/tts_service.dart';
 import 'package:learning_app/view_models/base_view_model.dart';
 
 class AuthenticationViewModel extends BaseViewModel {
@@ -34,12 +35,14 @@ class AuthenticationViewModel extends BaseViewModel {
   String? _email = "";
   String? _password = "";
   bool _showPassword = false;
+  bool _showConfirmPassword = false;
   bool _isProduction = false;
   bool _rememberMe = false;
 
   String? get getEmail => _email;
   String? get getPassword => _password;
   bool get getShowPassword => _showPassword;
+  bool get getShowConfirmPassword => _showConfirmPassword;
   bool get isProduction => _isProduction;
   bool get rememberMe => _rememberMe;
 
@@ -55,6 +58,11 @@ class AuthenticationViewModel extends BaseViewModel {
 
   setShowPassword(bool showPassword) async {
     _showPassword = showPassword;
+    notifyListeners();
+  }
+
+  setShowConfirmPassword(bool showConfirmPassword) async {
+    _showConfirmPassword = showConfirmPassword;
     notifyListeners();
   }
 
