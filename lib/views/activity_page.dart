@@ -73,31 +73,32 @@ class _ActivityWidgetState extends State<ActivityPage> {
                               child: const Icon(
                                 Icons.check,
                                 size: 20,
-                              ))
-                          : Padding(
-                              padding: const EdgeInsets.fromLTRB(5, 2, 5, 5),
-                              child: IconButton(
-                                  onPressed: () {
-                                    viewModel.markAsComplete(true,
-                                        viewModel.currentActivity!, null);
-                                  },
-                                  icon: Text(
-                                    'Mark as Complete ${viewModel.currentActivity!.getCompleteString}',
-                                    style: const TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 14,
-                                    ),
-                                  ),
-                                  style: IconButton.styleFrom(
-                                      padding: const EdgeInsets.fromLTRB(
-                                          10, 0, 10, 0),
-                                      backgroundColor: Colors.orangeAccent,
-                                      shape: const RoundedRectangleBorder(
-                                          side: BorderSide(
-                                              color: Colors.white, width: 3),
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(5))))),
-                            ))),
+                              )) : SizedBox(),
+                          // : Padding(
+                          //     padding: const EdgeInsets.fromLTRB(5, 2, 5, 5),
+                          //     child: IconButton(
+                          //         onPressed: () {
+                          //           viewModel.markAsComplete(true,
+                          //               viewModel.currentActivity!, null);
+                          //         },
+                          //         icon: Text(
+                          //           'Mark as Complete ${viewModel.currentActivity!.getCompleteString}',
+                          //           style: const TextStyle(
+                          //             color: Colors.white,
+                          //             fontSize: 14,
+                          //           ),
+                          //         ),
+                          //         style: IconButton.styleFrom(
+                          //             padding: const EdgeInsets.fromLTRB(
+                          //                 10, 0, 10, 0),
+                          //             backgroundColor: Colors.orangeAccent,
+                          //             shape: const RoundedRectangleBorder(
+                          //                 side: BorderSide(
+                          //                     color: Colors.white, width: 3),
+                          //                 borderRadius: BorderRadius.all(
+                          //                     Radius.circular(5))))),
+                          //   )
+                            )),
             ],
           )
                   )
@@ -290,7 +291,7 @@ class _ActivityWidgetState extends State<ActivityPage> {
                 Padding(
                   padding: const EdgeInsets.all(20),
                   child: SingleChildScrollView(
-                    child: SizedBox( width: double.infinity, height: MediaQuery.of(context).size.height - 100,
+                    child: Container( color: Colors.amber, width: double.infinity, height: MediaQuery.of(context).size.height - 150,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -343,13 +344,13 @@ class _ActivityWidgetState extends State<ActivityPage> {
                           const SizedBox(
                             height: 15,
                           ),
-                          Row(children: [
+                          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                             Text(
                               style: const TextStyle(fontSize: 26, color: Color(0xffc5ced9)),
                               currentQuiz.question!),
                             (currentQuiz.tts_description??"").isNotEmpty ? IconButton(onPressed: () async {
                               await locator<TTSService>().speak(currentQuiz.tts_description!);
-                            }, icon: Icon(Icons.speaker),) : SizedBox()
+                            }, icon: Icon(Icons.volume_up, size: 40, color: Colors.white,),) : SizedBox()
                           ],),
                           const SizedBox(
                             height: 15,
@@ -503,13 +504,13 @@ class _ActivityWidgetState extends State<ActivityPage> {
                           const SizedBox(
                             height: 15,
                           ),
-                          Row(children: [
+                          Row(mainAxisAlignment:  MainAxisAlignment.center, children: [
                             Text(
                               style: const TextStyle(fontSize: 26, color: Color(0xffc5ced9)),
                               currentQuiz.question!),
                             (currentQuiz.tts_description??"").isNotEmpty ? IconButton(onPressed: () async {
                               await locator<TTSService>().speak(currentQuiz.tts_description!);
-                            }, icon: Icon(Icons.speaker),) : SizedBox()
+                            }, icon: Icon(Icons.volume_up, size: 40, color: Colors.white,),) : SizedBox()
                           ],),
                           const SizedBox(
                             height: 15,
@@ -667,13 +668,13 @@ class _ActivityWidgetState extends State<ActivityPage> {
                                                           const SizedBox(
                                                             height: 15,
                                                           ),
-                                                        Row(children: [
+                                                        Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                             Text(
                               style: const TextStyle(fontSize: 26, color: Color(0xffc5ced9)),
                               currentQuiz.question!),
                             (currentQuiz.tts_description??"").isNotEmpty ? IconButton(onPressed: () async {
                               await locator<TTSService>().speak(currentQuiz.tts_description!);
-                            }, icon: Icon(Icons.speaker),) : SizedBox()
+                            }, icon: Icon(Icons.volume_up, size: 40, color: Colors.white,),) : SizedBox()
                           ],),
                                                         const SizedBox(
                                                           height: 15,
@@ -805,7 +806,7 @@ class _ActivityWidgetState extends State<ActivityPage> {
                               currentQuiz.question!),
                             (currentQuiz.tts_description??"").isNotEmpty ? IconButton(onPressed: () async {
                               await locator<TTSService>().speak(currentQuiz.tts_description!);
-                            }, icon: Icon(Icons.speaker),) : SizedBox()
+                            }, icon: Icon(Icons.volume_up, size: 40, color: Colors.white,),) : SizedBox()
                           ],),
                                                                     )
                                                                   ],
@@ -1101,7 +1102,10 @@ class _ActivityWidgetState extends State<ActivityPage> {
             borderRadius: BorderRadius.circular(5)),
         margin: const EdgeInsets.all(10),
         child: InkWell(
-            onTap: () {
+            onTap: () async {
+              if((item.tts_description??"").isNotEmpty){
+            await locator<TTSService>().speak(item.tts_description!);
+          }
               viewModel.setQuizAnswer(item);
             },
             child: Padding(

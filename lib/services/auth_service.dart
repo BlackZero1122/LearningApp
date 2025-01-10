@@ -23,14 +23,14 @@ class AuthMService{
   UserCredential result = await firebaseAuth.signInWithPopup(provider);
   User? userdetails= result.user;
 if(userdetails!=null){
-      await FirebaseFirestore.instance.collection('users').doc(userdetails.uid).set({
-                'name': userdetails.displayName,
-                'gender': "Male",
-                'email': userdetails.email, // Optional: Store user email
-                'createdAt':
-                    FieldValue.serverTimestamp(), // Timestamp for user creation
-              });
-      return userdetails;
+      // await FirebaseFirestore.instance.collection('users').doc(userdetails.uid).set({
+      //           'name': userdetails.displayName,
+      //           'gender': "Male",
+      //           'email': userdetails.email, // Optional: Store user email
+      //           'createdAt':
+      //               FieldValue.serverTimestamp(), // Timestamp for user creation
+      //         });
+      // return userdetails;
 }
 }else{
 final GoogleSignIn googleSignIn= GoogleSignIn();
@@ -49,13 +49,13 @@ final GoogleSignIn googleSignIn= GoogleSignIn();
     User? userdetails= result.user;
 
     if(userdetails!=null){
-       await FirebaseFirestore.instance.collection('users').doc(userdetails.uid).set({
-                'name': userdetails.displayName,
-                'gender': "Male",
-                'email': userdetails.email, // Optional: Store user email
-                'createdAt':
-                    FieldValue.serverTimestamp(), // Timestamp for user creation
-              });
+      //  await FirebaseFirestore.instance.collection('users').doc(userdetails.uid).set({
+      //           'name': userdetails.displayName,
+      //           'gender': "Male",
+      //           'email': userdetails.email, // Optional: Store user email
+      //           'createdAt':
+      //               FieldValue.serverTimestamp(), // Timestamp for user creation
+      //         });
       return userdetails;
     }
 }
