@@ -75,7 +75,7 @@ class LessonPage extends StatelessWidget {
                                     Expanded(
                                         child: Container( clipBehavior: Clip.antiAlias,
                                   decoration: (viewModel.getSelectedLesson?.activities?[index].thumbnail==null || viewModel.getSelectedLesson!.activities![index].thumbnail!.isEmpty) ? BoxDecoration(
-                                      color: Color(0xff41435a),
+                                      color: Color.fromARGB(255, 120, 122, 140),
                                       borderRadius: BorderRadius.circular(5)) : BoxDecoration(image: DecorationImage(fit: BoxFit.cover, image: NetworkImage(viewModel.getSelectedLesson!.activities![index].thumbnail!))),
                                 ),),
                                     SizedBox(
