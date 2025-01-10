@@ -91,6 +91,7 @@ class StartupViewModel extends BaseViewModel {
           courseName: "English 101",
           lessons: [
             Lesson(
+                skill: "Listening",
                 tts_description: "Lets study english alphabets",
                 title: 'Fun with Alphbets',
                 subjectId: "001",
@@ -104,8 +105,8 @@ class StartupViewModel extends BaseViewModel {
                 totalActivities: 5,
                 activities: [
                   Activity(
-                      activityId: "activity_1",
-                      id: "activity_1",
+                      activityId: "001001001",
+                      id: "001001001",
                       subjectId: "001",
                       lessonId: "001001",
                       title: "The Alphabet Song",
@@ -131,10 +132,10 @@ class StartupViewModel extends BaseViewModel {
                           "Let's sing the alphabet song together! Listen carefully and repeat the letters as they are sung. It's fun to sing along!",
                       skill: "Listening"),
                   Activity(
-                      activityId: "activity_2",
-                      id: "activity_2",
+                      activityId: "001001002",
+                      id: "001001002",
                       subjectId: "001",
-                      lessonId: "lesson_1",
+                      lessonId: "001001",
                       title: "Phonics Sounds of Alphabets",
                       topic: "Alphabets",
                       activityTypeString: "YouTubeVideo",
@@ -158,10 +159,10 @@ class StartupViewModel extends BaseViewModel {
                           "Let's learn the sounds of the alphabet. Each letter has a sound, and this video will help you listen and repeat them. Are you ready?",
                       skill: "Cognitive"),
                   Activity(
-                      activityId: "activity_3",
-                      id: "activity_3",
+                      activityId: "001001003",
+                      id: "001001003",
                       subjectId: "001",
-                      lessonId: "lesson_1",
+                      lessonId: "001001",
                       title: "Learn ABC Alphabet with Animals",
                       topic: "Alphabets",
                       activityTypeString: "YouTubeVideo",
@@ -186,8 +187,8 @@ class StartupViewModel extends BaseViewModel {
                       skill: "Vocabulary"),
                   Activity(
                       tts_description: "Activity",
-                      activityId: "001001002",
-                      id: "001001002",
+                      activityId: "001001004",
+                      id: "001001004",
                       lessonId: "001001",
                       subjectId: "001",
                       title: "Activity",
@@ -211,34 +212,34 @@ class StartupViewModel extends BaseViewModel {
                             Quiz(
                                 tts_description: "What comes after C?",
                                 quizType: "MultipleChoice",
-                                id: "0010010021",
+                                id: "0010010041",
                                 image:
                                     "",
                                 question: "What comes after C?",
                                 answerList: [
                                   AnswerList(
-                                      id: "00100100211",
+                                      id: "00100100411",
                                       tts_description: "D",
                                       answer: "D",
                                       image:
                                           "https://www.shareicon.net/data/128x128/2016/10/20/846389_letter_512x512.png",
                                       isCorrect: true),
                                   AnswerList(
-                                      id: "00100100212",
+                                      id: "00100100412",
                                       tts_description: "F",
                                       answer: "F",
                                       image:
                                           "https://www.shareicon.net/data/128x128/2016/10/20/846422_blue_512x512.png",
                                       isCorrect: false),
                                   AnswerList(
-                                      id: "00100100213",
+                                      id: "00100100413",
                                       tts_description: "O",
                                       answer: "O",
                                       image:
                                           "https://www.shareicon.net/data/128x128/2016/10/20/846444_alphabet-letter-letters-o-red_512x512.png",
                                       isCorrect: false),
                                   AnswerList(
-                                      id: "00100100214",
+                                      id: "00100100414",
                                       tts_description: "K",
                                       answer: "K",
                                       image:
@@ -249,34 +250,34 @@ class StartupViewModel extends BaseViewModel {
                             Quiz(
                                 tts_description: "What is the last alphabet in english?",
                                 quizType: "MultipleChoice",
-                                id: "0010010021",
+                                id: "0010010041",
                                 image:
                                     "",
                                 question: "What is the last alphabet in english?",
                                 answerList: [
                                   AnswerList(
-                                      id: "00100100211",
+                                      id: "00100100411",
                                       tts_description: "Z",
                                       answer: "Z",
                                       image:
                                           "https://cdn3.iconfinder.com/data/icons/letters-and-numbers-1/32/letter_X_red-128.png",
                                       isCorrect: false),
                                   AnswerList(
-                                      id: "00100100212",
+                                      id: "00100100412",
                                       tts_description: "Y",
                                       answer: "Y",
                                       image:
                                           "https://cdn3.iconfinder.com/data/icons/letters-and-numbers-1/32/letter_Y_red-128.png",
                                       isCorrect: false),
                                   AnswerList(
-                                      id: "00100100213",
+                                      id: "00100100413",
                                       tts_description: "V",
                                       answer: "V",
                                       image:
                                           "https://cdn3.iconfinder.com/data/icons/letters-and-numbers-1/32/letter_V_blue-128.png",
                                       isCorrect: false),
                                   AnswerList(
-                                      id: "00100100214",
+                                      id: "00100100414",
                                       tts_description: "Z",
                                       answer: "Z",
                                       image:
@@ -287,32 +288,11 @@ class StartupViewModel extends BaseViewModel {
                           ]),
                       rules:
                           Rules(maxReadCount: 1, trackActivityProgress: true)),
-                  // Activity(
-                  //     tts_description: "Activity 3",
-                  //     activityId: "001001003",
-                  //     id: "001001003",
-                  //     lessonId: "001001",
-                  //     subjectId: "001",
-                  //     title: "Activity 3",
-                  //     topic: "Topic 1",
-                  //     activityType: 8,
-                  //     activityTypeString: "YouTubeVideo",
-                  //     content: "https://www.youtube.com/watch?v=BBAyRBTfsOU",
-                  //     grade: 0,
-                  //     subject: 0,
-                  //     semester: 0,
-                  //     session: 0,
-                  //     thumbnail: "",
-                  //     sequence: 0,
-                  //     readCount: 0,
-                  //     assessment: null,
-                  //     rules:
-                  //         Rules(maxReadCount: 1, trackActivityProgress: true)),
                 ]),
             Lesson(
                 title: "Lets learn new worlds",
                 subjectId: "001",
-                id: "001002:",
+                id: "001002",
                 topicId: "001002",
                 sequence: 0,
                 enable: true,
@@ -326,8 +306,8 @@ class StartupViewModel extends BaseViewModel {
                 totalActivities: 3,
                 activities: [
                   Activity(
-                      activityId: "activity_1",
-                      id: "activity_1",
+                      activityId: "001002001",
+                      id: "001002001",
                       subjectId: "001",
                       lessonId: "001002",
                       title: "Useful Phrases",
@@ -350,8 +330,8 @@ class StartupViewModel extends BaseViewModel {
                       tts_description: "we will learn new phares and words",
                       skill: "Vacabulary"),
                   Activity(
-                      activityId: "activity_2",
-                      id: "activity_2",
+                      activityId: "001002002",
+                      id: "001002002",
                       subjectId: "001",
                       lessonId: "001002",
                       title: "Daily use action words",
@@ -374,8 +354,8 @@ class StartupViewModel extends BaseViewModel {
                       tts_description:
                           "Let's learn how to use different words when doing some actions"),
                   Activity(
-                      activityId: "activity_3",
-                      id: "activity_3",
+                      activityId: "001002003",
+                      id: "001002003",
                       subjectId: "001",
                       lessonId: "001002",
                       title: "Fruits and Vegetables Names",
@@ -397,7 +377,163 @@ class StartupViewModel extends BaseViewModel {
                       description: "Lets learn about fruits and vegtables",
                       tts_description: "Lets learn about fruits and vegtables",
                       skill: "Vocabulary")
-                ])
+                ]),
+            Lesson(
+                skill: "Vocabulary",
+                tts_description: "Lets study math",
+                title: 'Fun with Math',
+                subjectId: "001",
+                id: "001003",
+                topicId: "001003",
+                sequence: 0,
+                enable: true,
+                thumbnail:
+                    "https://cdn.vectorstock.com/i/500p/17/10/font-design-for-word-math-with-happy-kids-vector-19801710.jpg",
+                completePercent: 100,
+                totalActivities: 5,
+                activities: [
+                  Activity(
+                      activityId: "001003001",
+                      id: "001003001",
+                      subjectId: "001",
+                      lessonId: "001003",
+                      title: "Counting 1 to 10",
+                      topic: "Alphabets",
+                      activityTypeString: "YouTubeVideo",
+                      activityType: 8,
+                      content: "https://www.youtube.com/watch?v=DR-cfDsHCGA",
+                      grade: 0,
+                      subject: 0,
+                      semester: 0,
+                      session: 2023,
+                      thumbnail:
+                          "",
+                      sequence: 1,
+                      readCount: 0,
+                      completePercent: 0,
+                      assessment: null,
+                      rules:
+                          Rules(maxReadCount: 1, trackActivityProgress: true),
+                      description:
+                          "Counting 1 to 10",
+                      tts_description:
+                          "Counting 1 to 10",
+                      skill: "Listening"),
+                  Activity(
+                      activityId: "001003002",
+                      id: "001003002",
+                      subjectId: "001",
+                      lessonId: "001003",
+                      title: "How Many Fingers",
+                      topic: "Alphabets",
+                      activityTypeString: "YouTubeVideo",
+                      activityType: 8,
+                      content: "https://www.youtube.com/watch?v=xNw1SSz18Gg",
+                      grade: 0,
+                      subject: 0,
+                      semester: 0,
+                      session: 2023,
+                      thumbnail:
+                          "",
+                      sequence: 2,
+                      readCount: 0,
+                      completePercent: 0,
+                      assessment: null,
+                      rules:
+                          Rules(maxReadCount: 1, trackActivityProgress: true),
+                      description:
+                          "How Many Fingers",
+                      tts_description:
+                          "How Many Fingers",
+                      skill: "Cognitive"),
+                  Activity(
+                      tts_description: "Activity",
+                      activityId: "001003004",
+                      id: "0001003004",
+                      lessonId: "001003",
+                      subjectId: "001",
+                      title: "Activity",
+                      topic: "Topic 1",
+                      activityType: 7,
+                      activityTypeString: "Quiz",
+                      content: "",
+                      grade: 0,
+                      subject: 0,
+                      semester: 0,
+                      session: 0,
+                      thumbnail: "",
+                      sequence: 0,
+                      readCount: 0,
+                      assessment: Assessment(
+                          noOfQuizToAsk: 3,
+                          correctNoOfQuizToPass: 1,
+                          isRequired: true,
+                          maxTryAttempts: 3,
+                          quizzes: [
+                            Quiz(
+                                tts_description: "How Many Fingers shown in the image?",
+                                quizType: "MultipleChoice",
+                                id: "0010030041",
+                                image:
+                                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQGamBKU-3eKVTdklv35l2Yy5ZnPNYEFg7eNg&s",
+                                question: "How Many Fingers shown in the image?",
+                                answerList: [
+                                  AnswerList(
+                                      id: "00100300411",
+                                      tts_description: "3",
+                                      answer: "3",
+                                      image:
+                                          "",
+                                      isCorrect: true),
+                                  AnswerList(
+                                      id: "00100300412",
+                                      tts_description: "4",
+                                      answer: "4",
+                                      image:
+                                          "",
+                                      isCorrect: false),
+                                  AnswerList(
+                                      id: "00100300413",
+                                      tts_description: "2",
+                                      answer: "2",
+                                      image:
+                                          "",
+                                      isCorrect: false),
+                                  AnswerList(
+                                      id: "00100300414",
+                                      tts_description: "1",
+                                      answer: "1",
+                                      image:
+                                          "",
+                                      isCorrect: false)
+                                ],
+                                questionList: []),
+                            Quiz(
+                                tts_description: "Is there two bananas in the image",
+                                quizType: "TrueFalse",
+                                id: "0010030041",
+                                image:
+                                    "https://static.vecteezy.com/system/resources/thumbnails/024/734/340/small_2x/cartoon-illustration-of-two-bananas-vector.jpg",
+                                question: "Is there two bananas in the image?",
+                                answerList: [
+                                  AnswerList(
+                                      id: "00100300411",
+                                      tts_description: "True",
+                                      answer: "True",
+                                      image:"",
+                                      isCorrect: true),
+                                  AnswerList(
+                                      id: "00100300414",
+                                      tts_description: "False",
+                                      answer: "False",
+                                      image:"",
+                                      isCorrect: false)
+                                ],
+                                questionList: []),
+                          ]),
+                      rules:
+                          Rules(maxReadCount: 1, trackActivityProgress: true)),
+                ]),
           ]);
       await locator<IHiveService<Subject>>().addOrUpdate(engSubject);
       _navigationService.pushNamedAndRemoveUntil(
