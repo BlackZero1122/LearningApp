@@ -38,8 +38,8 @@ class LoginPage extends StatelessWidget {
         resizeToAvoidBottomInset: true,
         body: Column(
           children: [
-            SizedBox(height: 100),
-            Image.asset('assets/images/logo.png', height: 100), // Replace with your logo asset
+            SizedBox(height: 50),
+            Image.asset('assets/images/logo.png', height: 80), // Replace with your logo asset
             Text('Welcome Back', style: Theme.of(context).textTheme.titleLarge),
            
             Container(
@@ -198,10 +198,10 @@ class LoginPage extends StatelessWidget {
               ),
             ),
             Spacer(), // Use Spacer to balance the layout
-            Padding(
-              padding: EdgeInsets.only(top: 20),
-              child: Text('Forgot Password?', style: TextStyle(color: Color(0xffc5ced9))),
-            ),
+            // Padding(
+            //   padding: EdgeInsets.only(top: 20),
+            //   child: Text('Forgot Password?', style: TextStyle(color: Color(0xffc5ced9))),
+            // ),
           ],
         ),
       ),
