@@ -344,10 +344,12 @@ class _ActivityWidgetState extends State<ActivityPage> {
                           const SizedBox(
                             height: 15,
                           ),
-                          Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                            Text(
-                              style: const TextStyle(fontSize: 26, color: Color(0xffc5ced9)),
-                              currentQuiz.question!),
+                          Wrap(alignment: WrapAlignment.center, children: [
+                            Padding( padding: EdgeInsets.only(top: 10),
+                              child: Text(
+                                style: const TextStyle(fontSize: 26, color: Color(0xffc5ced9)),
+                                currentQuiz.question!),
+                            ),
                             (currentQuiz.tts_description??"").isNotEmpty ? IconButton(onPressed: () async {
                               await locator<TTSService>().speak(currentQuiz.tts_description!);
                             }, icon: Icon(Icons.volume_up, size: 40, color: Colors.white,),) : SizedBox()
@@ -504,10 +506,12 @@ class _ActivityWidgetState extends State<ActivityPage> {
                           const SizedBox(
                             height: 15,
                           ),
-                          Row(mainAxisAlignment:  MainAxisAlignment.center, children: [
-                            Text(
-                              style: const TextStyle(fontSize: 26, color: Color(0xffc5ced9)),
-                              currentQuiz.question!),
+                          Wrap(alignment: WrapAlignment.center, children: [
+                            Padding( padding: EdgeInsets.only(top: 10),
+                              child: Text(
+                                style: const TextStyle(fontSize: 26, color: Color(0xffc5ced9)),
+                                currentQuiz.question!),
+                            ),
                             (currentQuiz.tts_description??"").isNotEmpty ? IconButton(onPressed: () async {
                               await locator<TTSService>().speak(currentQuiz.tts_description!);
                             }, icon: Icon(Icons.volume_up, size: 40, color: Colors.white,),) : SizedBox()
@@ -668,10 +672,12 @@ class _ActivityWidgetState extends State<ActivityPage> {
                                                           const SizedBox(
                                                             height: 15,
                                                           ),
-                                                        Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                            Text(
-                              style: const TextStyle(fontSize: 26, color: Color(0xffc5ced9)),
-                              currentQuiz.question!),
+                                                        Wrap(alignment: WrapAlignment.center, children: [
+                            Padding( padding: EdgeInsets.only(top: 10),
+                              child: Text(
+                                style: const TextStyle(fontSize: 26, color: Color(0xffc5ced9)),
+                                currentQuiz.question!),
+                            ),
                             (currentQuiz.tts_description??"").isNotEmpty ? IconButton(onPressed: () async {
                               await locator<TTSService>().speak(currentQuiz.tts_description!);
                             }, icon: Icon(Icons.volume_up, size: 40, color: Colors.white,),) : SizedBox()
@@ -800,10 +806,12 @@ class _ActivityWidgetState extends State<ActivityPage> {
                                                                       child: Text('Q :', style: const TextStyle(fontSize: 18, color: Color(0xffc5ced9)),),
                                                                     ),
                                                                     Expanded(
-                                                                      child: Row(children: [
-                            Text(
-                              style: const TextStyle(fontSize: 26, color: Color(0xffc5ced9)),
-                              currentQuiz.question!),
+                                                                      child: Wrap(children: [
+                            Padding( padding: EdgeInsets.only(top: 10),
+                              child: Text(
+                                style: const TextStyle(fontSize: 26, color: Color(0xffc5ced9)),
+                                currentQuiz.question!),
+                            ),
                             (currentQuiz.tts_description??"").isNotEmpty ? IconButton(onPressed: () async {
                               await locator<TTSService>().speak(currentQuiz.tts_description!);
                             }, icon: Icon(Icons.volume_up, size: 40, color: Colors.white,),) : SizedBox()

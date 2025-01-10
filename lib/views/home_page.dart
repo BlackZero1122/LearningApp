@@ -327,20 +327,11 @@ class HomePage extends StatelessWidget {
                                                           children: [
                                                             Expanded(
                                                                 child:
-                                                                    Container(
-                                                                      child: Image.network(viewModel
-                                                                          .getSelectedSubject
-                                                                          ?.lessons?[
-                                                                              index]
-                                                                          .thumbnail ??'',fit: BoxFit.cover),
-                                                              decoration: BoxDecoration(
-                                                                  color: Color(
-                                                                      0xff41435a),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              5)),
-                                                            )),
+                                                                    Container( clipBehavior: Clip.antiAlias,
+                                  decoration: (viewModel.getSelectedSubject?.lessons?[index].thumbnail==null || viewModel.getSelectedSubject!.lessons![index].thumbnail!.isEmpty) ? BoxDecoration(
+                                      color: Color.fromARGB(255, 120, 122, 140),
+                                      borderRadius: BorderRadius.circular(5)) : BoxDecoration(image: DecorationImage(fit: BoxFit.cover, image: NetworkImage(viewModel.getSelectedSubject!.lessons![index].thumbnail!))),
+                                )),
                                                             SizedBox(
                                                               height: 5,
                                                             ),
