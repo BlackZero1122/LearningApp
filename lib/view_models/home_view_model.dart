@@ -257,6 +257,8 @@ class HomeViewModel extends BaseViewModel {
           }
         activities[index].lsnId=getSelectedLesson!.topicId;
         activities[index].subId=getSelectedSubject!.courseId;
+        if(activities[index].readCount==null){activities[index].readCount=0;}
+        else {activities[index].readCount=activities[index].readCount!+1;}
         await _activityViewModel.init(activities[index]);
         if(push){
           await locator<NavigationService>().pushNamed(Routes.activityDetail, data: null, args: TransitionType.fade);

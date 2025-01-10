@@ -41,7 +41,10 @@ class Lesson extends IHiveBaseModel<Lesson> {
     bool lock=false;
     bool get completed => !activities!.isNotEmpty || activities!.every((element) => element.completed);
     double get completeRatio{
-      return activities!.where((x)=>x.completed).length / activities!.length;
+      return (activities!.where((x)=>x.completed).length / activities!.length);
+    }
+    double get completeRatioPercent{
+      return completeRatio*100;
     }
     String get completeString{
       return "  ${activities!.where((x)=>x.completed).length.toString()} / ${activities!.length.toString()}";

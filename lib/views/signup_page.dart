@@ -33,13 +33,15 @@ class SignUpPage extends StatelessWidget {
       onInit: () {
         //
       },
-      child: Scaffold(backgroundColor: Color(0xff262835), key: scaffoldKey, resizeToAvoidBottomInset: true,
+      child: Scaffold(backgroundColor: Color.fromARGB(255, 255, 255, 255), key: scaffoldKey, resizeToAvoidBottomInset: true,
         body: Column(
           children: [
             Expanded(child: SizedBox()),
+              Image.asset('assets/images/logo.png', height: 100), // Replace with your logo asset
+            Text('Please fill the information to signup!', style: Theme.of(context).textTheme.titleLarge),
             SizedBox( height: 670,
               child: Container( height: double.infinity,
-                  decoration: const BoxDecoration(color: Color(0xff262835),),
+                  decoration: const BoxDecoration(color: Color.fromARGB(255, 255, 255, 255),),
                   child: SingleChildScrollView(
               child: Padding( padding: const EdgeInsets.all(5),
                 child: Column(
@@ -51,18 +53,18 @@ class SignUpPage extends StatelessWidget {
                         child: Column(
                           children: [
                             StatefulBuilder( builder: (context, setState) {
-                              return Card(color: Color(0xff363749), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)), margin: EdgeInsetsDirectional.only(top: 20, end: 20, start: 20), elevation: 1, child: Padding( padding: EdgeInsets.all(30),
+                              return Card(color: Color.fromARGB(255, 255, 255, 255), shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)), margin: EdgeInsetsDirectional.only(top: 20, end: 20, start: 20), elevation: 0, child: Padding( padding: EdgeInsets.all(30),
                                 child: Column( crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Text('Full Name', style: TextStyle(color: Color(0xffc5ced9)),),
+                                    Text('Full Name', style: TextStyle(color: Color.fromARGB(255, 51, 52, 52)),),
                                     DefaultTextInput( validator: (value) {
                                                   if (value == null || value.isEmpty) {
                                                     return "Please enter your name.";
                                                   }
                                                   return null;
-                                                },controller: nameController, fillColor: Color(0xffc5ced9), hintText: "Full Name..."),
+                                                },controller: nameController, fillColor: Color.fromARGB(255, 255, 255, 255), hintText: "Full Name..."),
                                     SizedBox(height: 10,),
-                                    Text('Gender', style: TextStyle(color: Color(0xffc5ced9)),),
+                                    Text('Gender', style: TextStyle(color: Color.fromARGB(255, 51, 52, 52)),),
                                     Row(children: [
                                       Expanded(
                                         child: ListTile(
@@ -98,7 +100,7 @@ class SignUpPage extends StatelessWidget {
                                       )
                                     ],),
                                     SizedBox(height: 5,),
-                                    Text('Email', style: TextStyle(color: Color(0xffc5ced9)),),
+                                    Text('Email', style: TextStyle(color: Color.fromARGB(255, 51, 52, 52)),),
                                     DefaultTextInput(validator: (value) {
                                                   if (value == null || value.isEmpty) {
                                                     return "Please enter your email.";
@@ -108,9 +110,9 @@ class SignUpPage extends StatelessWidget {
                                     
                                   }
                                                   return null;
-                                                },controller: emailController, fillColor: Color(0xffc5ced9), hintText: "Email...",),
+                                                },controller: emailController, fillColor: Color.fromARGB(255, 255, 255, 255), hintText: "Email...",),
                                     SizedBox(height: 20,),
-                                    Text('Password', style: TextStyle(color: Color(0xffc5ced9)),),
+                                    Text('Password', style: TextStyle(color: Color.fromARGB(255, 51, 52, 52)),),
                                     DefaultTextInput( validator: (value) {
                                                   if (value == null || value.isEmpty) {
                                                     return "Please enter password.";
@@ -119,11 +121,11 @@ class SignUpPage extends StatelessWidget {
                                                       return "Please enter valid password.";
                                                     }
                                                   return null;
-                                                },controller: passwordController, fillColor: Color(0xffc5ced9), hintText: "Password...", secureText: !viewModel.getShowPassword, isPassword: true, onEyePressed: () {
+                                                },controller: passwordController, fillColor: Color.fromARGB(255, 255, 255, 255), hintText: "Password...", secureText: !viewModel.getShowPassword, isPassword: true, onEyePressed: () {
                                         viewModel.setShowPassword(!viewModel.getShowPassword);
                                       }, showPassword: viewModel.getShowPassword,),
                                     SizedBox(height: 20,),
-                                    Text('Confirm Password', style: TextStyle(color: Color(0xffc5ced9)),),
+                                    Text('Confirm Password', style: TextStyle(color: Color.fromARGB(255, 51, 52, 52)),),
                                     DefaultTextInput(validator: (value) {
                                                   if (value == null || value.isEmpty) {
                                                     return "Please enter confirm password";
@@ -132,7 +134,7 @@ class SignUpPage extends StatelessWidget {
                                                       return "Password not match.";
                                                     }
                                                   return null;
-                                                },controller: confirmPasswordController, fillColor: Color(0xffc5ced9), hintText: "Confirm Password...", secureText: !viewModel.getShowConfirmPassword, isPassword: true, onEyePressed: () {
+                                                },controller: confirmPasswordController, fillColor: Color.fromARGB(255, 255, 255, 255), hintText: "Confirm Password...", secureText: !viewModel.getShowConfirmPassword, isPassword: true, onEyePressed: () {
                                         viewModel.setShowConfirmPassword(!viewModel.getShowConfirmPassword);
                                       }, showPassword: viewModel.getShowConfirmPassword,),
                                     SizedBox(height: 20,),
@@ -141,7 +143,7 @@ class SignUpPage extends StatelessWidget {
                                         if (formKey.currentState!.validate()) {
                                                     viewModel.signup(nameController.text, emailController.text, passwordController.text, gender);
                                                   }
-                                                            }, text: 'Sign Up', fontcolor: Color(0xffc5ced9), backgroundcolor: Color(0xff6769e4), height: 40,),
+                                                            }, text: 'Sign Up', fontcolor: Color(0xffc5ced9), backgroundcolor: Color(0xff6769e4), height: 60,),
                                     )
                                   ],
                                 ),
@@ -149,7 +151,7 @@ class SignUpPage extends StatelessWidget {
                             },
                             ),
                             Align( alignment: Alignment.bottomCenter,
-                              child: SizedBox(height: 60, width: 250, child: InkWell(onTap: () {
+                              child: SizedBox(height: 50, width: 250, child: InkWell(onTap: () {
                                 viewModel.setShowPassword(false);
                                 viewModel.setShowConfirmPassword(false);
                                 locator<NavigationService>().pushNamedAndRemoveUntil(
@@ -157,7 +159,7 @@ class SignUpPage extends StatelessWidget {
                         args: TransitionType.fade,
                                             );
                               }, child: Card(margin: EdgeInsets.only(top: 0), color: Color.fromARGB(204, 51, 52, 70),
-                                child: Center(child: Text('Log In', style: TextStyle(color: Color(0xffc5ced9)),)),
+                                child: Center(child: Text('Already have account? login', style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),)),
                                 shape: RoundedRectangleBorder(borderRadius: BorderRadius.only(bottomLeft: Radius.circular(5), bottomRight: Radius.circular(5))),))),
                             )
                           ],
