@@ -97,7 +97,7 @@ class StartupViewModel extends BaseViewModel {
                   topicId: "001001",
                   sequence: 0,
                   enable: true,
-                  thumbnail: "",
+                  thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXtSyrpwKp4xWAyDhBNvjia8JDB0-xJTqsKg&s",
                   completePercent: 100,
                   totalActivities: 0,
                   activities: [
@@ -329,7 +329,7 @@ title: "Lets learn new worlds",
       tts_description:"We will know new words ",
       completePercent: 0,
       skill:"Vocabulary",
-      thumbnail: "",
+      thumbnail: "https://cdn.penguin.co.in/wp-content/uploads/2023/02/9780143445210.jpg",
       lessonEnable: "true",
       activities: [
         Activity(

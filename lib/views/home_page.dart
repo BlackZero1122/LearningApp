@@ -316,6 +316,11 @@ class HomePage extends StatelessWidget {
                                                             Expanded(
                                                                 child:
                                                                     Container(
+                                                                      child: Image.network(viewModel
+                                                                          .getSelectedSubject
+                                                                          ?.lessons?[
+                                                                              index]
+                                                                          .thumbnail ??'',fit: BoxFit.cover),
                                                               decoration: BoxDecoration(
                                                                   color: Color(
                                                                       0xff41435a),
