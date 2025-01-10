@@ -73,19 +73,11 @@ class LessonPage extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Expanded(
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                       
-                                          color: Color.fromARGB(255, 255, 255, 255),
-                                          borderRadius: BorderRadius.circular(5)),
-                                          child: Image.network(viewModel.getSelectedLesson?.activities?[index].thumbnail??
-  getYouTubeThumbnail(viewModel.getSelectedLesson?.activities?[index].content ?? ''),
-  errorBuilder: (context, error, stackTrace) {
-    return Text('Invalid thumbnail URL'); // Fallback widget
-  },
-),
-
-                                    )),
+                                        child: Container( clipBehavior: Clip.antiAlias,
+                                  decoration: (viewModel.getSelectedLesson?.activities?[index].thumbnail==null || viewModel.getSelectedLesson!.activities![index].thumbnail!.isEmpty) ? BoxDecoration(
+                                      color: Color(0xff41435a),
+                                      borderRadius: BorderRadius.circular(5)) : BoxDecoration(image: DecorationImage(fit: BoxFit.cover, image: NetworkImage(viewModel.getSelectedLesson!.activities![index].thumbnail!))),
+                                ),),
                                     SizedBox(
                                       height: 5,
                                     ),

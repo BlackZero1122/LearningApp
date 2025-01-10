@@ -138,7 +138,10 @@ class HomePage extends StatelessWidget {
                                                             CircularPercentIndicator(
                                                               radius: 35.0,
                                                               lineWidth: 12.0,
-                                                              percent: 0.8,
+                                                              percent: viewModel
+                                                                .getSelectedSubject
+                                                                ?.completeListenRatio ??
+                                                            0,
                                                               center: new Icon(
                                                                 Icons.earbuds,
                                                                 size: 35.0,
@@ -173,7 +176,10 @@ class HomePage extends StatelessWidget {
                                                               CircularPercentIndicator(
                                                                 radius: 35.0,
                                                                 lineWidth: 12.0,
-                                                                percent: 0.8,
+                                                                percent: viewModel
+                                                                .getSelectedSubject
+                                                                ?.completeCogniRatio ??
+                                                            0,
                                                                 center:
                                                                     new Icon(
                                                                   Icons
@@ -197,7 +203,7 @@ class HomePage extends StatelessWidget {
                                                                         0xffa962e5),
                                                               ),
                                                               const Text(
-                                                                  "Coginative",
+                                                                  "Cognitive",
                                                                   style: TextStyle(
                                                                       fontSize:
                                                                           12))
@@ -208,7 +214,10 @@ class HomePage extends StatelessWidget {
                                                               CircularPercentIndicator(
                                                                 radius: 35.0,
                                                                 lineWidth: 12.0,
-                                                                percent: 0.8,
+                                                                percent: viewModel
+                                                                .getSelectedSubject
+                                                                ?.completeVocabRatio ??
+                                                            0,
                                                                 center:
                                                                     new Icon(
                                                                   Icons
@@ -242,7 +251,10 @@ class HomePage extends StatelessWidget {
                                                               CircularPercentIndicator(
                                                                 radius: 35.0,
                                                                 lineWidth: 12.0,
-                                                                percent: 0.8,
+                                                                percent: viewModel
+                                                                .getSelectedSubject
+                                                                ?.completeSociRatio ??
+                                                            0,
                                                                 center:
                                                                     new Icon(
                                                                   Icons
@@ -299,7 +311,7 @@ class HomePage extends StatelessWidget {
                                                                 BorderRadius
                                                                     .circular(
                                                                         5)),
-                                                    color: Color(0xff363749),
+                                                    color: Color.fromARGB(255, 255, 255, 255),
                                                     child: InkWell(
                                                       onTap: () {
                                                         viewModel.selectLesson(
@@ -315,14 +327,9 @@ class HomePage extends StatelessWidget {
                                                           children: [
                                                             Expanded(
                                                                 child:
-                                                                    Container(
-                                                              decoration: BoxDecoration(
-                                                                  color: Color(
-                                                                      0xff41435a),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              5)),
+                                                                    Container( clipBehavior: Clip.antiAlias,
+                                  decoration: (viewModel.getSelectedSubject?.lessons?[index].thumbnail==null || viewModel.getSelectedSubject!.lessons![index].thumbnail!.isEmpty) ? BoxDecoration(
+                                    color: Color.fromARGB(255, 120, 122, 140), borderRadius: BorderRadius.circular(5)) : BoxDecoration(image: DecorationImage(fit: BoxFit.cover, image: NetworkImage(viewModel.getSelectedSubject!.lessons![index].thumbnail!))),
                                                             )),
                                                             SizedBox(
                                                               height: 5,
@@ -341,14 +348,9 @@ class HomePage extends StatelessWidget {
                                                                           .title ??
                                                                       "N/A",
                                                                   maxLines: 2,
-                                                                  overflow:
-                                                                      TextOverflow
-                                                                          .ellipsis,
-                                                                  style: TextStyle(
-                                                                      color: Color(
-                                                                          0xffc5ced9),
-                                                                      fontSize:
-                                                                          14),
+                                          overflow: TextOverflow.ellipsis,
+                                          style: TextStyle(
+                                              color: Color.fromARGB(255, 215, 92, 4), fontSize: 20),
                                                                 )),
                                                                 (viewModel
                                                                             .getSelectedSubject

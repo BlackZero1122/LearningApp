@@ -291,7 +291,7 @@ class _ActivityWidgetState extends State<ActivityPage> {
                 Padding(
                   padding: const EdgeInsets.all(20),
                   child: SingleChildScrollView(
-                    child: Container( color: Colors.amber, width: double.infinity, height: MediaQuery.of(context).size.height - 150,
+                    child: SizedBox(width:double.infinity, height: MediaQuery.of(context).size.height - 100,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
