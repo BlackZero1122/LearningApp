@@ -52,6 +52,18 @@ class Subject extends IHiveBaseModel<Subject> {
     double get completeRatio{
       return lessons!.where((x)=>x.completed).length / lessons!.length;
     }
+    double get completeListenRatio{
+      return lessons!.where((x)=>x.skill=="Listening").isEmpty ? 0 : lessons!.where((x)=>x.skill=="Listening" && x.completed).length / lessons!.where((x)=>x.skill=="Listening").length;
+    }
+    double get completeCogniRatio{
+      return lessons!.where((x)=>x.skill=="Cognitive").isEmpty ? 0 : lessons!.where((x)=>x.skill=="Cognitive" && x.completed).length / lessons!.where((x)=>x.skill=="Cognitive").length;
+    }
+    double get completeVocabRatio{
+      return lessons!.where((x)=>x.skill=="Vocabulary").isEmpty ? 0 : lessons!.where((x)=>x.skill=="Vocabulary" && x.completed).length / lessons!.where((x)=>x.skill=="Vocabulary").length;
+    }
+    double get completeSociRatio{
+      return lessons!.where((x)=>x.skill=="Social").isEmpty ? 0 : lessons!.where((x)=>x.skill=="Social" && x.completed).length / lessons!.where((x)=>x.skill=="Social").length;
+    }
     String get completeString{
       return "  ${lessons!.where((x)=>x.completed).length.toString()} / ${lessons!.length.toString()}";
     }

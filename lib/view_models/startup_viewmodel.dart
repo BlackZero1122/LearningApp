@@ -127,7 +127,7 @@ class StartupViewModel extends BaseViewModel {
                             "A sing-along video teaching the English alphabet.",
                         tts_description:
                             "Let's sing the alphabet song together! Listen carefully and repeat the letters as they are sung. It's fun to sing along!",
-                        skill: "Listening, Alphabet Recognition"),
+                        skill: "Listening"),
                     Activity(
                         activityId: "activity_2",
                         id: "activity_2",
@@ -154,7 +154,7 @@ class StartupViewModel extends BaseViewModel {
                             "A fun video introducing the phonics sounds of each letter in the alphabet.",
                         tts_description:
                             "Let's learn the sounds of the alphabet. Each letter has a sound, and this video will help you listen and repeat them. Are you ready?",
-                        skill: "Listening, Phonemic Awareness"),
+                        skill: "Cognitive"),
                     Activity(
                         activityId: "activity_3",
                         id: "activity_3",
@@ -181,7 +181,7 @@ class StartupViewModel extends BaseViewModel {
                             "A video connecting letters of the alphabet to animals (e.g., A for Alligator, B for Bear).",
                         tts_description:
                             "Let's meet animals whose names start with the letters of the alphabet. Listen to the names and repeat them with me!",
-                        skill: "Listening, Vocabulary Building"),
+                        skill: "Vocabulary"),
                                       Activity(
                         tts_description: "Activity 2",
                         activityId: "001001002",

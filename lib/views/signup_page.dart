@@ -39,7 +39,7 @@ class SignUpPage extends StatelessWidget {
             Expanded(child: SizedBox()),
               Image.asset('assets/images/logo.png', height: 100), // Replace with your logo asset
             Text('Please fill the information to signup!', style: Theme.of(context).textTheme.titleLarge),
-            SizedBox( height: 670,
+            SizedBox( height: 580,
               child: Container( height: double.infinity,
                   decoration: const BoxDecoration(color: Color.fromARGB(255, 255, 255, 255),),
                   child: SingleChildScrollView(
@@ -63,43 +63,43 @@ class SignUpPage extends StatelessWidget {
                                                   }
                                                   return null;
                                                 },controller: nameController, fillColor: Color.fromARGB(255, 255, 255, 255), hintText: "Full Name..."),
-                                    SizedBox(height: 10,),
-                                    Text('Gender', style: TextStyle(color: Color.fromARGB(255, 51, 52, 52)),),
-                                    Row(children: [
-                                      Expanded(
-                                        child: ListTile(
-                                                  title: const Text('Male', style: TextStyle(color: Colors.grey),),
-                                                  leading: SizedBox( width: 10,
-                                                    child: Radio<String>(fillColor: WidgetStatePropertyAll(Colors.grey),
-                                                      value: "Male",
-                                                      groupValue: gender,
-                                                      onChanged: (String? value) {
-                                                        setState(() {
-                                                          gender = value!;
-                                                        });
-                                                      },
-                                                    ),
-                                                  ),
-                                                ),
-                                      ),
-                                      Expanded(
-                                        child: ListTile(
-                                                  title: const Text('Female', style: TextStyle(color: Colors.grey),),
-                                                  leading: SizedBox( width: 10,
-                                                    child: Radio<String>(fillColor: WidgetStatePropertyAll(Colors.grey),
-                                                      value: "Female",
-                                                      groupValue: gender,
-                                                      onChanged: (String? value) {
-                                                        setState(() {
-                                                          gender = value!;
-                                                        });
-                                                      },
-                                                    ),
-                                                  ),
-                                                ),
-                                      )
-                                    ],),
-                                    SizedBox(height: 5,),
+                                    SizedBox(height: 20,),
+                                    // Text('Gender', style: TextStyle(color: Color.fromARGB(255, 51, 52, 52)),),
+                                    // Row(children: [
+                                    //   Expanded(
+                                    //     child: ListTile(
+                                    //               title: const Text('Male', style: TextStyle(color: Colors.grey),),
+                                    //               leading: SizedBox( width: 10,
+                                    //                 child: Radio<String>(fillColor: WidgetStatePropertyAll(Colors.grey),
+                                    //                   value: "Male",
+                                    //                   groupValue: gender,
+                                    //                   onChanged: (String? value) {
+                                    //                     setState(() {
+                                    //                       gender = value!;
+                                    //                     });
+                                    //                   },
+                                    //                 ),
+                                    //               ),
+                                    //             ),
+                                    //   ),
+                                    //   Expanded(
+                                    //     child: ListTile(
+                                    //               title: const Text('Female', style: TextStyle(color: Colors.grey),),
+                                    //               leading: SizedBox( width: 10,
+                                    //                 child: Radio<String>(fillColor: WidgetStatePropertyAll(Colors.grey),
+                                    //                   value: "Female",
+                                    //                   groupValue: gender,
+                                    //                   onChanged: (String? value) {
+                                    //                     setState(() {
+                                    //                       gender = value!;
+                                    //                     });
+                                    //                   },
+                                    //                 ),
+                                    //               ),
+                                    //             ),
+                                    //   )
+                                    // ],),
+                                    // SizedBox(height: 5,),
                                     Text('Email', style: TextStyle(color: Color.fromARGB(255, 51, 52, 52)),),
                                     DefaultTextInput(validator: (value) {
                                                   if (value == null || value.isEmpty) {
